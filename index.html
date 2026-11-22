@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0f1115">
-<title>آینه رشد | آکادمی اکام</title>
+<title>AKAM Academy | آکادمی آکام</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -42,6 +42,8 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
 .divider{height:2px;width:160px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px auto}
 
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px;margin:32px auto}
+.public-grid{grid-template-columns:1fr;max-width:440px}
+#brandAdminTrigger{cursor:default;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .tile{position:relative;background:linear-gradient(160deg,#1c212b,#14171f);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .25s,border-color .25s,box-shadow .25s}
 .tile:hover{transform:translateY(-3px);border-color:rgba(240,191,74,.3);box-shadow:var(--shadow)}
 .tile .icon{width:52px;height:52px;border-radius:15px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;font-size:27.6px;margin-bottom:16px}
@@ -181,10 +183,10 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
 <div class="wrap">
   <header class="header">
     <div class="brand">
-      <div class="logo">آ</div>
+      <div class="logo" id="brandAdminTrigger" onclick="secretAdminAccess()" role="button" tabindex="0" aria-label="لوگوی آکادمی">A</div>
       <div>
-        <b>آینه رشد</b>
-        <small>آکادمی اکام</small>
+        <b>AKAM Academy</b>
+        <small>آکادمی آکام</small>
       </div>
     </div>
     <span class="mode-badge" id="modeBadge">ذخیره محلی</span>
@@ -197,18 +199,12 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
       <p>یک ارزیابی جامع با ۱۹ سؤال تخصصی که حال درونی و کسب‌وکار شما را در یک کارنامه هوشمند تحلیل می‌کند. امتیازها در طول آزمون پنهان‌اند و کارنامه پس از پایان نمایش داده می‌شود.</p>
       <div class="divider"></div>
     </div>
-    <div class="grid">
+    <div class="grid public-grid">
       <article class="tile">
         <div class="icon">✦</div>
         <h2>شروع ارزیابی جامع</h2>
         <p>۱۹ سؤال · دو محور: توسعه فردی و کسب‌وکار · کارنامه تحلیلی کامل.</p>
         <button class="btn block" onclick="show('identity')">شروع ارزیابی ←</button>
-      </article>
-      <article class="tile">
-        <div class="icon">♙</div>
-        <h2>پنل اختصاصی مدیران</h2>
-        <p>مشاهده کاربران، پاسخ‌ها، امتیازها و مدیریت مدیران دیگر.</p>
-        <button class="btn dark block" onclick="openManager()">ورود مدیر ←</button>
       </article>
     </div>
     <div class="notice blue">امتیازها در طول آزمون پنهان می‌مانند. کارنامه پس از تکمیل همه ۱۹ سؤال نمایش داده می‌شود.</div>
@@ -255,6 +251,7 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
       <h2 class="qtitle" id="extraTitle"></h2>
       <p class="qtext" id="extraText"></p>
       <div class="options" id="extraOptions"></div>
+      <button class="btn dark block" type="button" onclick="finishExtra()" style="margin-top:14px">رد شدن از این سؤال و مشاهده تحلیل ←</button>
     </div>
   </section>
 
@@ -288,26 +285,14 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
       <button class="back" onclick="show('home')">بازگشت</button>
     </div>
     <div class="card" style="max-width:520px;margin:auto">
-      <div id="setupBox">
-        <h2>ساخت مدیر اصلی</h2>
-        <p class="muted" style="margin-bottom:14px">فقط یک‌بار و فقط با شماره مجاز سیستم قابل انجام است.</p>
-        <label class="label">نام و نام خانوادگی</label>
-        <input class="field" id="adminNameSetup" placeholder="نام کامل مدیر">
-        <label class="label">شماره موبایل</label>
-        <input class="field" id="adminPhoneSetup" dir="ltr" placeholder="09xxxxxxxxx">
-        <label class="label">رمز عبور (حداقل ۸ کاراکتر)</label>
-        <input class="field" id="adminPassSetup" type="password">
-        <button class="btn block" onclick="setupAdmin()">ثبت مدیر اصلی</button>
-      </div>
-      <div id="loginBox" class="hidden">
+      <div id="loginBox">
         <h2>ورود به پنل مدیریت</h2>
-        <label class="label">نام و نام خانوادگی</label>
+        <p class="muted" style="margin-bottom:14px">این بخش فقط برای مدیران مجاز است. برای مدیر اصلی واردکردن نام اختیاری است.</p>
+        <label class="label">نام و نام خانوادگی (اختیاری)</label>
         <input class="field" id="adminName" placeholder="نام کامل مدیر">
-        <label class="label">شماره موبایل</label>
-        <input class="field" id="adminPhone" dir="ltr">
-        <label class="label">رمز عبور</label>
-        <input class="field" id="adminPass" type="password">
-        <button class="btn block" onclick="loginAdmin()">ورود ←</button>
+        <label class="label">شماره موبایل مدیر اصلی یا نام/شماره مدیر افزوده‌شده</label>
+        <input class="field" id="adminPhone" dir="auto" placeholder="شماره مدیر اصلی یا نام مدیر افزوده‌شده">
+        <button class="btn block" onclick="loginAdmin()">ورود به پنل ←</button>
       </div>
       <p id="loginMsg" class="muted" style="text-align:center;margin-top:12px"></p>
     </div>
@@ -372,15 +357,11 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
           </div>
           <div class="card" style="margin-top:14px">
             <h2>افزودن مدیر جدید</h2>
-            <p class="muted" style="margin-bottom:12px">مدیر جدید با نام، شماره و رمز عبور خود می‌تواند به پنل وارد شود.</p>
+            <p class="muted" style="margin-bottom:12px">افزودن مدیر اختیاری است؛ برای مدیر جدید نام و نام خانوادگی یا شماره موبایل کافی است. ورود او با همان مشخصه انجام می‌شود.</p>
             <div class="cols">
               <div><label class="label">نام و نام خانوادگی</label><input class="field" id="newAdminName" placeholder="نام کامل"></div>
               <div><label class="label">شماره موبایل</label><input class="field" id="newAdminPhone" dir="ltr" placeholder="09xxxxxxxxx"></div>
             </div>
-            <label class="label">رمز عبور (حداقل ۸ کاراکتر)</label>
-            <input class="field" id="newAdminPass" type="password">
-            <label class="label">تکرار رمز عبور</label>
-            <input class="field" id="newAdminPass2" type="password">
             <button class="btn block" onclick="addAdmin()">افزودن مدیر ←</button>
             <p id="addAdminMsg" class="muted" style="text-align:center;margin-top:10px"></p>
           </div>
@@ -390,7 +371,7 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
   </section>
 
   <footer class="footer">
-    آینه رشد · آکادمی اکام<br>
+    AKAM Academy · آکادمی آکام<br>
     این کارنامه خودارزیابی اولیه است و جایگزین تشخیص تخصصی نیست.
   </footer>
 </div>
@@ -408,9 +389,9 @@ h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-ba
 <script>
 const CONFIG = {
   ADMIN_NAME:  "مدیر آکادمی",
-  ADMIN_PHONE: "09130985971",
-  BRAND:       "آینه رشد",
-  ACADEMY:     "آکادمی اکام"
+  ADMIN_PHONE: "09037719670",
+  BRAND:       "AKAM Academy",
+  ACADEMY:     "آکادمی آکام"
 };
 
 const PERSONAL_QS = [
@@ -676,18 +657,24 @@ let isAdmin = false;
 let cache = { users: [], results: [] };
 
 function loadState() {
+  let s = { admins: [], users: [], results: [] };
   try {
-    let s = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (!s) {
-      const old = JSON.parse(localStorage.getItem('ayeneh_roshd_v2') || 'null');
-      if (old && old.admins) return old;
-      return { admins: [], users: [], results: [] };
-    }
-    if (!s.admins) s.admins = [];
-    return s;
-  } catch (e) {
-    return { admins: [], users: [], results: [] };
+    s = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') ||
+        JSON.parse(localStorage.getItem('ayeneh_roshd_v2') || 'null') || s;
+  } catch (e) { s = { admins: [], users: [], results: [] }; }
+  if (!Array.isArray(s.admins)) s.admins = [];
+  if (!Array.isArray(s.users)) s.users = [];
+  if (!Array.isArray(s.results)) s.results = [];
+  let primary = s.admins.find(a => a.is_primary);
+  if (!primary) {
+    primary = { id:'a_primary', name:'', phone:CONFIG.ADMIN_PHONE, is_primary:true, created_at:new Date().toISOString() };
+    s.admins.unshift(primary);
+  } else {
+    primary.phone = CONFIG.ADMIN_PHONE;
+    primary.is_primary = true;
   }
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {}
+  return s;
 }
 function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
@@ -765,6 +752,10 @@ function drawQuestion() {
 }
 
 function next() {
+  if (currentAnswers[currentIndex] === null || currentAnswers[currentIndex] === undefined) {
+    alert('لطفاً ابتدا به این سؤال پاسخ دهید.');
+    return;
+  }
   if (currentIndex < ALL_QUESTIONS.length - 1) {
     currentIndex++;
     drawQuestion();
@@ -795,7 +786,13 @@ function drawExtra() {
     $('extraOptions').appendChild(b);
   });
 }
-function finishExtra() { makeReport(); }
+function finishExtra() {
+  if (currentAnswers.length !== ALL_QUESTIONS.length || currentAnswers.some(a => a === null || a === undefined)) {
+    alert('پاسخ همه سؤال‌ها کامل ثبت نشده است. لطفاً آزمون را دوباره بررسی کنید.');
+    return;
+  }
+  makeReport();
+}
 
 function restartTest() {
   currentUser = null;
@@ -810,6 +807,10 @@ function restartTest() {
    REPORT – تحلیل کاملاً پویا با تعریف یکتای هر عدد
    ============================================================ */
 function makeReport() {
+  if (!currentUser || currentAnswers.length !== ALL_QUESTIONS.length || currentAnswers.some(a => a === null || a === undefined)) {
+    alert('برای ساخت کارنامه، ابتدا همه سؤال‌ها را کامل پاسخ دهید.');
+    return;
+  }
   const sum = currentAnswers.reduce((a, n, i) => a + ALL_QUESTIONS[i].options[n].score, 0);
   const personalSum = currentAnswers.reduce((a, n, i) => a + (ALL_QUESTIONS[i].section === 'personal' ? ALL_QUESTIONS[i].options[n].score : 0), 0);
   const businessSum = currentAnswers.reduce((a, n, i) => a + (ALL_QUESTIONS[i].section === 'business' ? ALL_QUESTIONS[i].options[n].score : 0), 0);
@@ -905,13 +906,8 @@ function makeReport() {
   }
 
   /* ---------- اولویت انتخابی مشاوره ---------- */
-  let extraSection = '';
-  if (currentExtra !== null) {
-    const extraOpt = EXTRA_Q.options[currentExtra];
-    extraSection = `<p>۵. <b>اولویت انتخابی شما برای جلسه ۲۰ دقیقه‌ای:</b> <span style="color:var(--gold)">${esc(extraOpt.text)}</span></p>`;
-  }
-
-  const finalIndex = currentExtra !== null ? '۶' : '۵';
+  const extraOpt = currentExtra !== null ? EXTRA_Q.options[currentExtra] : null;
+  const extraText = extraOpt ? ` انتخاب شما برای جلسه: ${esc(extraOpt.text)}.` : '';
 
   let html = `
     <div class="scorehero">
@@ -931,9 +927,7 @@ function makeReport() {
       ${personalSection}
       ${businessSection}
       ${strengthSection}
-      ${extraSection}
-      <p>${finalIndex}. <b>اولویت قطعی اقدام:</b> <span style="color:var(--gold)">${band.action}</span></p>
-      <p style="font-size:14.9px;color:var(--muted);font-weight:500">برای دریافت راهکار دقیق و شخصی‌سازی‌شده، عدد ۳ را در گفت‌وگوی ایتا برای آکادمی اکام ارسال کنید.</p>
+      <p>۵. <b>اقدام بعدی:</b> <span style="color:var(--gold)">${band.action}</span>${extraText}</p>
     </div>
   `;
 
@@ -955,50 +949,61 @@ function saveResult() {
   $('saveMsg').textContent = '✓ کارنامه با موفقیت ذخیره شد.';
 }
 
+let adminTapCount = 0;
+let adminTapReset = null;
+function secretAdminAccess() {
+  adminTapCount += 1;
+  if (adminTapReset) clearTimeout(adminTapReset);
+  adminTapReset = setTimeout(() => { adminTapCount = 0; }, 2200);
+  if (adminTapCount >= 5) {
+    adminTapCount = 0;
+    clearTimeout(adminTapReset);
+    adminTapReset = null;
+    openManager();
+  }
+}
+
+document.addEventListener('keydown', event => {
+  const logo = $('brandAdminTrigger');
+  if (logo && document.activeElement === logo && (event.key === 'Enter' || event.key === ' ')) {
+    event.preventDefault();
+    secretAdminAccess();
+  }
+});
+
 function openManager() {
   show('managerLogin');
   $('loginMsg').textContent = '';
-  if (!state.admins.length) {
-    $('setupBox').classList.remove('hidden');
-    $('loginBox').classList.add('hidden');
-  } else {
-    $('setupBox').classList.add('hidden');
-    $('loginBox').classList.remove('hidden');
-  }
-}
-
-async function setupAdmin() {
-  const name = $('adminNameSetup').value.trim();
-  const phone = normPhone($('adminPhoneSetup').value);
-  const pass = $('adminPassSetup').value;
-
-  if (!name || digits(phone).length < 10 || pass.length < 8) {
-    $('loginMsg').textContent = 'همه فیلدها را کامل کنید (رمز حداقل ۸ کاراکتر).';
-    return;
-  }
-  if (!phoneMatches(phone, CONFIG.ADMIN_PHONE)) {
-    $('loginMsg').textContent = '⚠️ این شماره مجاز به ثبت مدیر اصلی نیست.';
-    return;
-  }
-  if (state.admins.length) { $('loginMsg').textContent = 'مدیر اصلی قبلاً ثبت شده است.'; return; }
-
-  state.admins.push({ id: 'a_primary', name, phone, hash: await sha256(pass), is_primary: true, created_at: new Date().toISOString() });
-  persist();
-  $('setupBox').classList.add('hidden');
   $('loginBox').classList.remove('hidden');
-  $('adminPhone').value = phone.replace('+98', '0');
-  $('adminName').value = name;
-  $('loginMsg').textContent = '✓ مدیر اصلی ثبت شد. اکنون وارد شوید.';
 }
 
-async function loginAdmin() {
-  const name = $('adminName').value.trim();
-  const phone = normPhone($('adminPhone').value);
-  const pass = $('adminPass').value;
-  if (!name || !pass) { $('loginMsg').textContent = 'نام و رمز را وارد کنید.'; return; }
-  const hash = await sha256(pass);
-  const admin = state.admins.find(a => phoneMatches(a.phone, phone) && a.name === name && a.hash === hash);
-  if (!admin) { $('loginMsg').textContent = 'نام، شماره یا رمز صحیح نیست.'; return; }
+function loginAdmin() {
+  const typed = ($('adminPhone').value || '').trim();
+  const optionalName = ($('adminName').value || '').trim();
+  const typedDigits = digits(typed);
+  const primary = state.admins.find(a => a.is_primary);
+  let admin = null;
+
+  // مدیر اصلی فقط با شماره مجاز وارد می‌شود؛ نام برای او اختیاری است.
+  if (typedDigits && phoneMatches(typed, CONFIG.ADMIN_PHONE)) {
+    admin = primary;
+    if (optionalName) {
+      admin.name = optionalName;
+      persist();
+    }
+  } else {
+    // مدیران افزوده‌شده می‌توانند با شماره یا نام ثبت‌شده وارد شوند.
+    admin = state.admins.find(a => !a.is_primary && (
+      (typedDigits && a.phone && phoneMatches(a.phone, typed)) ||
+      (!typedDigits && typed && a.name && a.name.trim().toLocaleLowerCase('fa') === typed.toLocaleLowerCase('fa'))
+    ));
+    if (admin && optionalName && !admin.name) { admin.name = optionalName; persist(); }
+  }
+
+  if (!admin) {
+    $('loginMsg').textContent = 'این بخش فقط برای مدیران مجاز است. اطلاعات ورود را بررسی کنید.';
+    return;
+  }
   isAdmin = true;
   currentAdmin = admin;
   show('admin');
@@ -1045,34 +1050,32 @@ function renderAdmin() {
     <div class="admin-card">
       <div class="info">
         <b>${esc(a.name)} ${a.is_primary ? '<span class="badge-primary">مدیر اصلی</span>' : ''}</b>
-        <small dir="ltr">${esc(a.phone)}</small>
+        <small>${a.is_primary ? 'مدیر اصلی' : (a.phone ? 'شماره ثبت‌شده: ' + esc(a.phone) : 'ورود با نام ثبت‌شده')}</small>
       </div>
       ${a.is_primary ? '<span class="muted">قابل حذف نیست</span>' : `<button class="btn danger small" onclick="removeAdmin('${esc(a.id)}')">حذف</button>`}
     </div>
   `).join('');
 }
 
-async function addAdmin() {
-  if (!isAdmin) return;
+function addAdmin() {
+  if (!isAdmin || !currentAdmin?.is_primary) {
+    $('addAdminMsg').textContent = 'فقط مدیر اصلی امکان افزودن مدیر جدید را دارد.';
+    return;
+  }
   const name = $('newAdminName').value.trim();
-  const phone = normPhone($('newAdminPhone').value);
-  const pass = $('newAdminPass').value;
-  const pass2 = $('newAdminPass2').value;
+  const phoneRaw = $('newAdminPhone').value.trim();
+  const phone = phoneRaw ? normPhone(phoneRaw) : '';
   const msg = $('addAdminMsg');
-
-  if (!name || digits(phone).length < 10 || !pass) { msg.textContent = 'همه فیلدها را کامل کنید.'; msg.style.color = 'var(--red)'; return; }
-  if (pass.length < 8) { msg.textContent = 'رمز باید حداقل ۸ کاراکتر باشد.'; msg.style.color = 'var(--red)'; return; }
-  if (pass !== pass2) { msg.textContent = 'رمز و تکرار آن یکسان نیست.'; msg.style.color = 'var(--red)'; return; }
-  if (state.admins.some(a => phoneMatches(a.phone, phone))) { msg.textContent = 'این شماره قبلاً به عنوان مدیر ثبت شده است.'; msg.style.color = 'var(--red)'; return; }
-
-  state.admins.push({ id: 'a_' + Date.now(), name, phone, hash: await sha256(pass), is_primary: false, created_at: new Date().toISOString(), created_by: currentAdmin.id });
+  if (!name && !phoneRaw) { msg.textContent = 'حداقل نام و نام خانوادگی یا شماره موبایل را وارد کنید.'; msg.style.color = 'var(--red)'; return; }
+  if (phoneRaw && digits(phone).length < 10) { msg.textContent = 'شماره موبایل معتبر نیست.'; msg.style.color = 'var(--red)'; return; }
+  if (phone && phoneMatches(phone, CONFIG.ADMIN_PHONE)) { msg.textContent = 'این شماره متعلق به مدیر اصلی است.'; msg.style.color = 'var(--red)'; return; }
+  if (phone && state.admins.some(a => a.phone && phoneMatches(a.phone, phone))) { msg.textContent = 'این شماره قبلاً ثبت شده است.'; msg.style.color = 'var(--red)'; return; }
+  if (name && state.admins.some(a => a.name && a.name.trim().toLocaleLowerCase('fa') === name.toLocaleLowerCase('fa'))) { msg.textContent = 'این نام قبلاً ثبت شده است.'; msg.style.color = 'var(--red)'; return; }
+  state.admins.push({ id:'a_' + Date.now(), name, phone, is_primary:false, created_at:new Date().toISOString(), created_by:currentAdmin.id });
   persist();
-
   $('newAdminName').value = '';
   $('newAdminPhone').value = '';
-  $('newAdminPass').value = '';
-  $('newAdminPass2').value = '';
-  msg.textContent = '✓ مدیر جدید با موفقیت اضافه شد.';
+  msg.textContent = 'مدیر جدید اضافه شد. او می‌تواند با نام ثبت‌شده یا شماره ثبت‌شده وارد شود.';
   msg.style.color = 'var(--green)';
   renderAdmin();
 }
