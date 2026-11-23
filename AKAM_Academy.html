@@ -1,44 +1,28 @@
-}function identityNext() {
-  const f = $('firstName').value.trim();
-  const l = $('lastName').value.trim();
-  const p = normPhone($('phone').value);
+}
+function identityNext() 
+  
+  
 
-  if (!f || !l) return alert('نام و نام خانوادگی را کامل کنید.');
-  if (digits(p).length < 10) return alert('شماره موبایل معتبر وارد کنید.');
-
+  // ثبت کاربر بلافاصله با زدن دکمه شروع آزمون
   let user = state.users.find(u => phoneMatches(u.phone, p));
 
   if (!user) {
     user = {
       id: 'u_' + Date.now(),
-      full_name: f + ' ' + l,
+      full_name: currentUser.full_name,
       phone: p,
       created_at: new Date().toISOString()
     };
     state.users.push(user);
   } else {
-    user.full_name = f + ' ' + l;
+    user.full_name = currentUser.full_name;
   }
 
   persist();
-
-  currentUser = {
-    full_name: user.full_name,
-    phone: user.phone
-  };
-
   startQuiz();
 }
 
-function identityNext() {
-  const f = $('firstName').value.trim();
-  const l = $('lastName').value.trim();
-  const p = normPhone($('phone').value);
-  if (!f || !l) return alert('نام و نام خانوادگی را کامل کنید.');
-  if (digits(p).length < 10) return alert('شماره موبایل معتبر وارد کنید.');
-  currentUser = { full_name: f + ' ' + l, phone: p };
-  startQuiz();
-}
+
 
 function startQuiz() {
   currentIndex = 0;
@@ -456,7 +440,7 @@ function exportResults() {
     const u = cache.users.find(x => x.id === r.user_id) || r.participant;
     return [u?.full_name || '', u?.phone || '', r.score, r.personal_score, r.business_score, r.max_score, dateFa(r.created_at)];
   })]);
-}
+}function identityNext
 
 $('modeBadge').textContent = state.admins.length ? 'مدیران: ' + state.admins.length : 'ذخیره محلی';
 </script>
