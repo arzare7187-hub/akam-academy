@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<title>AKAN Academy | آکادمی آکان</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1115;--bg2:#151821;--panel:#1a1e27;--panel2:#212632;
+  --line:#2e3542;--gold:#f0bf4a;--gold2:#d49516;--gold-soft:#3a2f1a;
+  --white:#f8f7f3;--muted:#9aa1ae;--green:#5fc596;--red:#e57373;
+  --shadow:0 12px 40px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(ellipse at 85% -5%,rgba(240,191,74,.12) 0,transparent 40%),
+    radial-gradient(ellipse at 0% 90%,rgba(80,120,180,.10) 0,transparent 45%),var(--bg);
+  color:var(--white);font-family:Vazirmatn,Tahoma,sans-serif;
+  min-height:100vh;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+.wrap{width:min(960px,calc(100% - 32px));margin:auto}
+.hidden{display:none!important}
+button,input,select{font-family:inherit}
+button{cursor:pointer;border:0}
+
+.header{padding:22px 0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,#ffe49c,#c48308);display:grid;place-items:center;color:#241a08;font-weight:900;font-size:25.3px;box-shadow:0 8px 24px rgba(212,149,22,.25)}
+.brand b{display:block;font-size:17.2px;letter-spacing:-.2px}
+.brand small{font-size:11.5px;color:var(--muted)}
+.mode-badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);padding:6px 12px;border-radius:20px}
+
+.hero{text-align:center;padding:56px 0 32px}
+.eyebrow{font-size:12.6px;font-weight:600;color:var(--gold);letter-spacing:1px;margin-bottom:10px}
+h1.hero-title{font-size:clamp(26px,5vw,42px);line-height:1.45;font-weight:800;letter-spacing:-.5px}
+h1.hero-title span{background:linear-gradient(135deg,#ffe49c,#d49516);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:14.9px;color:#b8bec9;line-height:2.1;max-width:640px;margin:16px auto 0}
+.divider{height:2px;width:160px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px auto}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:820px;margin:32px auto}
+.public-grid{grid-template-columns:1fr;max-width:440px}
+#brandAdminTrigger{cursor:default;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.tile{position:relative;background:linear-gradient(160deg,#1c212b,#14171f);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.tile:hover{transform:translateY(-3px);border-color:rgba(240,191,74,.3);box-shadow:var(--shadow)}
+.tile .icon{width:52px;height:52px;border-radius:15px;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;font-size:27.6px;margin-bottom:16px}
+.tile h2{font-size:17.2px;margin-bottom:8px;font-weight:700}
+.tile p{font-size:12.6px;color:var(--muted);line-height:1.95;min-height:46px;margin-bottom:16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#ffe08b,#d99a17);color:#241a08;border-radius:12px;padding:12px 18px;font-size:14.9px;font-weight:800;box-shadow:0 6px 18px rgba(212,149,22,.22);transition:all .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(212,149,22,.3)}
+.btn.block{width:100%;display:flex}
+.btn.dark{background:var(--panel2);color:var(--white);border:1px solid var(--line);box-shadow:none}
+.btn.dark:hover{background:#282e3b}
+.btn.danger{background:linear-gradient(135deg,#f08a8a,#c23939);color:#fff;box-shadow:none}
+.btn.small{padding:8px 12px;font-size:12.6px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+
+.screen{padding:32px 0 60px;animation:fadeIn .35s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.screen-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:20px}
+.screen-head h1{font-size:25.3px;font-weight:800;margin-top:4px}
+.screen-head .eyebrow{margin-bottom:4px}
+.back{background:var(--panel2);border:1px solid var(--line);color:#d4d8df;padding:9px 14px;border-radius:10px;font-size:12.6px;font-weight:600}
+.back:hover{background:#2a303d}
+
+.card{background:linear-gradient(160deg,#1b1f29,#14171f);border:1px solid var(--line);border-radius:18px;padding:24px}
+.card h2{font-size:17.2px;margin-bottom:14px;font-weight:700}
+.card h3{font-size:14.9px;margin-bottom:10px;font-weight:700;color:#e9c76f}
+
+.label{display:block;font-size:12.6px;color:#c4c8d0;margin:14px 0 6px;font-weight:600}
+.field{width:100%;padding:12px 14px;background:#0e1116;color:var(--white);border:1px solid #343b47;border-radius:10px;font-size:16px;outline:none;transition:border-color .2s}
+.field:focus{border-color:var(--gold);background:#12161c}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.muted{font-size:11.5px;color:var(--muted);line-height:1.9}
+.notice{font-size:12.6px;line-height:1.95;color:#e4d5ac;border:1px solid #4c3d1a;background:rgba(58,47,26,.5);border-radius:12px;padding:13px 15px;margin:14px 0}
+.notice.blue{color:#c7dcef;border-color:#2d4257;background:rgba(29,42,56,.5)}
+.notice.green{color:#b3e5c9;border-color:#2d5741;background:rgba(29,56,41,.5)}
+.notice.red{color:#f4baba;border-color:#573030;background:rgba(56,29,29,.5)}
+
+.quiz{max-width:820px;margin:auto}
+.qmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.progress{height:6px;border-radius:8px;background:#232831;margin-bottom:26px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#b97a0b,#ffdf87);transition:width .4s}
+.qtag{display:inline-block;border:1px solid #66501f;border-radius:20px;padding:5px 12px;color:var(--gold);font-size:11.5px;font-weight:600;margin-bottom:12px}
+.qtag.business{color:#88b8e5;border-color:#354d66;background:rgba(53,77,102,.2)}
+
+.qtitle{font-size:18.4px;color:#f0bf4a;margin-bottom:8px;font-weight:800}
+.qtext{font-size:25.3px;line-height:1.8;margin-bottom:25px;font-weight:800;color:#fff}
+
+.options{display:grid;gap:10px}
+.option{display:flex;align-items:flex-start;text-align:right;gap:13px;background:#1e222c;border:1.5px solid #343b47;border-radius:13px;padding:15px;color:#f4f3ef;width:100%;transition:all .18s}
+.option:hover{border-color:#9b762f;background:#222733}
+.option.selected{border-color:var(--gold);background:#2e2719;box-shadow:inset 0 0 0 1px rgba(240,191,74,.4)}
+.letter{width:30px;height:30px;flex:none;border:1.5px solid #59616c;border-radius:9px;display:grid;place-items:center;color:var(--gold);font-size:13.8px;font-weight:800;transition:all .18s}
+.selected .letter{background:var(--gold);color:#211807;border-color:var(--gold)}
+.optext{font-size:16.1px;line-height:1.8;flex:1}
+.tick{opacity:0;color:var(--gold);font-size:18.4px}
+.selected .tick{opacity:1}
+.qnav{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:24px}
+.qnav .muted{max-width:55%;text-align:center}
+
+.scorehero{text-align:center;border:1px solid #5c451b;border-radius:20px;padding:34px 24px;background:radial-gradient(ellipse at top,rgba(70,53,23,.85),rgba(28,31,40,.6) 72%);margin-bottom:16px;position:relative;overflow:hidden}
+.scorehero::before{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(240,191,74,.15),transparent 70%);pointer-events:none}
+.scorehero .eyebrow{position:relative}
+.score{font-size:64.4px;color:var(--gold);font-weight:900;line-height:1.1;margin:6px 0;position:relative;letter-spacing:-2px}
+.scorecap{font-size:13.8px;color:#e6d9ba;position:relative}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.split>div{background:#1e232d;border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.split b{display:block;font-size:25.3px;font-weight:800;margin-top:4px}
+.split small{font-size:11.5px;color:var(--muted)}
+.split .p b{color:#f0bf4a}
+.split .b b{color:#88b8e5}
+
+.bold-analysis{background:#1c2129;border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0;border-right:4px solid var(--gold);}
+.bold-analysis p{font-size:18.4px;font-weight:700;line-height:2.2;color:#fff;margin-bottom:12px;}
+.bold-analysis p:last-child{margin-bottom:0;}
+.bold-analysis span{color:var(--gold);font-weight:900;}
+
+.cta-box{margin:20px 0;padding:24px;text-align:center;border:1px solid #5b4821;border-radius:18px;background:linear-gradient(135deg,rgba(48,39,22,.9),rgba(29,32,37,.9))}
+.cta-box b{display:block;font-size:18.4px;color:#f5d27b;margin-bottom:12px}
+.cta-box a{display:inline-block;margin:6px 8px;color:#ffe39a;text-decoration:none;font-size:16.1px;font-weight:700;border:1px solid #6b5323;padding:10px 18px;border-radius:10px;transition:all .2s}
+.cta-box a:hover{background:#3a2f1a;transform:translateY(-1px)}
+.cta-box .wa{border-color:#2d5741;color:#b3e5c9}
+.cta-box .wa:hover{background:rgba(29,56,41,.5)}
+.cta-box .eitaa{border-color:#354d66;color:#b9d8f3}
+.cta-box .eitaa:hover{background:rgba(53,77,102,.28)}
+
+.admin-layout{display:grid;grid-template-columns:220px 1fr;gap:16px}
+.admin-nav{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px;height:max-content}
+.admin-nav button{width:100%;text-align:right;border:0;border-radius:10px;padding:12px 14px;background:transparent;color:#c4c8cf;font-size:13.8px;font-weight:500;transition:all .15s;margin-bottom:4px}
+.admin-nav button:hover{background:rgba(255,255,255,.04)}
+.admin-nav button.active{background:var(--gold-soft);color:var(--gold);font-weight:700}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.stat{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat small{display:block;color:var(--muted);font-size:11.5px;margin-bottom:4px}
+.stat b{font-size:29.9px;font-weight:800;color:var(--gold)}
+
+.tablewrap{overflow-x:auto}
+.table{width:100%;border-collapse:collapse;min-width:600px}
+.table th,.table td{text-align:right;padding:13px 10px;border-bottom:1px solid #2b313c;font-size:12.6px;white-space:nowrap}
+.table th{color:var(--muted);font-weight:600;font-size:11.5px}
+.search{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.search .field{max-width:340px;flex:1;min-width:180px}
+
+.admin-card{background:#1e232d;border:1px solid var(--line);border-radius:13px;padding:16px;margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.admin-card .info b{display:block;font-size:13.8px;color:#e9c76f}
+.admin-card .info small{font-size:11.5px;color:var(--muted);display:block;margin-top:3px}
+.admin-card .badge-primary{display:inline-block;font-size:10.3px;color:#241a08;background:var(--gold);padding:2px 8px;border-radius:8px;font-weight:700;margin-right:6px}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:grid;place-items:center;z-index:100;padding:20px}
+.modal-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;padding:24px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+
+.footer{text-align:center;color:#6a7280;font-size:11.5px;line-height:2;padding:24px 0 40px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px}
+
+@media(max-width:740px){
+  .grid,.cols{grid-template-columns:1fr}
+  .tile p{min-height:0}
+  .admin-layout{grid-template-columns:1fr}
+  .admin-nav{display:flex;overflow-x:auto;gap:6px}
+  .admin-nav button{white-space:nowrap;width:auto;padding:10px 14px;margin-bottom:0}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .qtext{font-size:20.7px}
+  .score{font-size:52.9px}
+  .summary,.split{grid-template-columns:1fr 1fr}
+}
+@media(max-width:420px){
+  .summary,.stats{grid-template-columns:1fr 1fr}
+  .option{padding:12px}
+  .optext{font-size:14.9px}
+  .score{font-size:43.7px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="header">
+    <div class="brand">
+      <div class="logo" id="brandAdminTrigger" onclick="secretAdminAccess()" role="button" tabindex="0" aria-label="لوگوی آکادمی">A</div>
+      <div>
+        <b>AKAN Academy</b>
+        <small>آکادمی آکان</small>
+      </div>
+    </div>
+    <span class="mode-badge" id="modeBadge">ذخیره محلی</span>
+  </header>
+
+  <section id="home" class="screen">
+    <div class="hero">
+      <div class="eyebrow">شناخت عمیق‌تر · تصمیم آگاهانه‌تر</div>
+      <h1 class="hero-title">مسیر رشدتان را با <span>آینه‌ای روشن</span> آغاز کنید</h1>
+      <p>یک ارزیابی جامع با ۱۹ سؤال تخصصی که حال درونی و کسب‌وکار شما را در یک کارنامه هوشمند تحلیل می‌کند. امتیازها در طول آزمون پنهان‌اند و کارنامه پس از پایان نمایش داده می‌شود.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="grid public-grid">
+      <article class="tile">
+        <div class="icon">✦</div>
+        <h2>شروع ارزیابی جامع</h2>
+        <p>۱۹ سؤال · دو محور: توسعه فردی و کسب‌وکار · کارنامه تحلیلی کامل.</p>
+        <button class="btn block" onclick="show('identity')">شروع ارزیابی ←</button>
+      </article>
+    </div>
+    <div class="notice blue">امتیازها در طول آزمون پنهان می‌مانند. کارنامه پس از تکمیل همه ۱۹ سؤال نمایش داده می‌شود.</div>
+
+    <div class="muted" style="text-align:center;margin-top:8px">با ثبت نهایی، کارنامه برای مشاهده مدیران مجاز در سامانه مرکزی ذخیره می‌شود.</div>
+  </section>
+
+  <section id="identity" class="screen hidden">
+    <div class="screen-head">
+      <div><div class="eyebrow">مرحله اول</div><h1>اطلاعات شرکت‌کننده</h1></div>
+      <button class="back" onclick="show('home')">بازگشت</button>
+    </div>
+    <div class="card">
+      <div class="cols">
+        <div><label class="label">نام</label><input class="field" id="firstName" placeholder="نام"></div>
+        <div><label class="label">نام خانوادگی</label><input class="field" id="lastName" placeholder="نام خانوادگی"></div>
+      </div>
+      <label class="label">شماره موبایل</label>
+      <input class="field" id="phone" dir="ltr" inputmode="tel" placeholder="09xxxxxxxxx">
+      <p id="identityMsg" class="muted" style="text-align:center;margin:8px 0 12px"></p>
+      <button class="btn block" id="startAssessmentBtn" onclick="identityNext()">شروع ارزیابی ←</button>
+    </div>
+  </section>
+
+  <section id="quiz" class="screen hidden">
+    <div class="screen-head">
+      <div><div class="eyebrow" id="sectionName"></div><h1 id="testName"></h1></div>
+      <button class="back" onclick="quitTest()">خروج</button>
+    </div>
+    <div class="card quiz">
+      <div class="qmeta"><span id="counter"></span><span id="sectionBadge"></span></div>
+      <div class="progress"><i id="progress" style="width:0%"></i></div>
+      <div class="qtag" id="qtag"></div>
+      <h2 class="qtitle" id="qtitle"></h2>
+      <p class="qtext" id="qtext"></p>
+      <div class="options" id="options"></div>
+    </div>
+  </section>
+
+  <section id="extra" class="screen hidden">
+    <div class="screen-head">
+      <div><div class="eyebrow">پرسش تکمیلی</div><h1>اولویت جلسه ۲۰ دقیقه‌ای</h1></div>
+    </div>
+    <div class="card quiz">
+      <div class="qtag">جدا از امتیاز اصلی</div>
+      <h2 class="qtitle" id="extraTitle"></h2>
+      <p class="qtext" id="extraText"></p>
+      <div class="options" id="extraOptions"></div>
+      <button class="btn dark block" type="button" onclick="finishExtra()" style="margin-top:14px">رد شدن از این سؤال و مشاهده تحلیل ←</button>
+    </div>
+  </section>
+
+  <section id="result" class="screen hidden">
+    <div class="screen-head">
+      <div><div class="eyebrow">کارنامه نهایی</div><h1>نتیجه ارزیابی جامع شما</h1></div>
+      <button class="back" onclick="show('home')">پایان</button>
+    </div>
+    <div id="report"></div>
+    
+    <div class="cta-box">
+      <b>برای ادامه گفتگو و بررسی دقیق‌تر</b>
+      <p class="muted" style="margin-bottom:6px;font-size:14.9px;font-weight:700;color:var(--white)">عدد ۳ را بفرست:</p>
+      <p class="muted" style="margin-top:10px;font-size:13.8px">واتساپ:</p>
+      <a class="wa" href="https://wa.me/989037719670" target="_blank" rel="noopener">۰۹۰۳۷۷۱۹۶۷۰ · ارتباط در واتساپ ↗</a>
+      <a class="eitaa" href="https://eitaa.com/Sarayany1" target="_blank" rel="noopener noreferrer">ارتباط مستقیم در ایتا · @Sarayany1 ↗</a>
+      
+      <p class="muted" style="margin-top:18px;font-size:13.8px;color:var(--white);font-weight:700;">
+        جهت رزرو جلسه رایگان خود به این آیدی پیام بدید یا برای جلسه رایگان خود حتما رزرو کنید.
+      </p>
+    </div>
+    <button class="btn dark block" onclick="restartTest()" style="margin-top:14px">شروع آزمون جدید</button>
+  </section>
+
+  <section id="managerLogin" class="screen hidden">
+    <div class="screen-head">
+      <div><div class="eyebrow">فضای خصوصی</div><h1>ورود مدیر</h1></div>
+      <button class="back" onclick="show('home')">بازگشت</button>
+    </div>
+    <div class="card" style="max-width:520px;margin:auto">
+      <h2>ورود امن مدیران</h2>
+      <p class="muted" style="margin-bottom:14px">این بخش فقط برای مدیر مجاز است. شماره موبایل و رمز مدیر را وارد کنید.</p>
+      <label class="label" for="adminPhone">شماره موبایل مدیر</label>
+      <input class="field" id="adminPhone" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="09xxxxxxxxx">
+      <label class="label" for="adminPass" style="margin-top:10px">رمز مدیر</label>
+      <input class="field" id="adminPass" type="password" dir="ltr" autocomplete="current-password" placeholder="رمز تعیین‌شده در Google Sheet">
+      <button class="btn block" id="requestOtpBtn" style="margin-top:12px" onclick="localAdminLogin()">ورود به پنل ←</button>
+      <p id="loginMsg" class="muted" style="text-align:center;margin-top:12px"></p>
+    </div>
+  </section>
+
+  <section id="admin" class="screen hidden">
+    <div class="screen-head">
+      <div><div class="eyebrow">مدیریت خصوصی</div><h1>پنل آکادمی</h1></div>
+      <button class="back" onclick="logout()">خروج</button>
+    </div>
+    <div class="admin-layout">
+      <nav class="admin-nav">
+        <button class="active" data-tab="overview" onclick="tab('overview')">نمای کلی</button>
+        <button data-tab="users" onclick="tab('users')">کاربران</button>
+        <button data-tab="results" onclick="tab('results')">کارنامه‌ها</button>
+        <button data-tab="admins" onclick="tab('admins')">مدیران</button>
+      </nav>
+      <div>
+        <div id="tab-overview">
+          <div class="stats">
+            <div class="stat"><small>کاربران</small><b id="nUsers">۰</b></div>
+            <div class="stat"><small>کارنامه‌ها</small><b id="nResults">۰</b></div>
+            <div class="stat"><small>مدیران</small><b id="nAdmins">۰</b></div>
+          </div>
+          <div class="card">
+            <h2>آخرین کارنامه‌ها</h2>
+            <div id="recentResults" class="muted">داده‌ای موجود نیست.</div>
+          </div>
+        </div>
+        <div id="tab-users" class="hidden">
+          <div class="card">
+            <div class="search">
+              <input class="field" id="userSearch" placeholder="نام یا شماره موبایل..." oninput="renderAdmin()">
+              <button class="btn dark small" onclick="exportUsers()">CSV</button>
+            </div>
+            <div class="tablewrap">
+              <table class="table">
+                <thead><tr><th>نام و نام خانوادگی</th><th>شماره موبایل</th><th>دفعات شروع</th><th>وضعیت</th><th>تاریخ ثبت</th><th>جزئیات</th></tr></thead>
+                <tbody id="usersRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="tab-results" class="hidden">
+          <div class="card">
+            <div class="search">
+              <input class="field" id="resultSearch" placeholder="نام یا شماره..." oninput="renderAdmin()">
+              <button class="btn dark small" onclick="exportResults()">CSV</button>
+            </div>
+            <div class="tablewrap">
+              <table class="table">
+                <thead><tr><th>نام</th><th>شماره</th><th>امتیاز کل</th><th>توسعه فردی</th><th>کسب‌وکار</th><th>زمان</th><th>نمایش</th></tr></thead>
+                <tbody id="resultsRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="tab-admins" class="hidden">
+          <div class="card">
+            <h2>مدیران فعلی</h2>
+            <div id="adminsList"></div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <h2>افزودن مدیر جدید</h2>
+            <p class="muted" style="margin-bottom:12px">افزودن مدیر اختیاری است. برای ورود امن، شماره موبایل مدیر جدید الزامی و نام و نام خانوادگی اختیاری است؛ ورود با کد یک‌بارمصرف انجام می‌شود.</p>
+            <div class="cols">
+              <div><label class="label">نام و نام خانوادگی</label><input class="field" id="newAdminName" placeholder="نام کامل"></div>
+              <div><label class="label">شماره موبایل</label><input class="field" id="newAdminPhone" dir="ltr" inputmode="tel" placeholder="09xxxxxxxxx" required></div>
+            </div>
+            <button class="btn block" onclick="addAdmin()">افزودن مدیر ←</button>
+            <p id="addAdminMsg" class="muted" style="text-align:center;margin-top:10px"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    AKAN Academy · آکادمی آکان<br>
+    این کارنامه خودارزیابی اولیه است و جایگزین تشخیص تخصصی نیست.
+  </footer>
+</div>
+
+<div class="modal hidden" id="detailModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2 style="font-size:17.2px">جزئیات کارنامه</h2>
+      <button class="back" onclick="closeModal()">بستن</button>
+    </div>
+    <div id="detailBody"></div>
+  </div>
+</div>
+
+<script>
+const CONFIG = {
+  BRAND:       "AKAN Academy",
+  ACADEMY:     "آکادمی آکان"
+};
+
+const supabaseClient = null; // بدون پایگاه داده
+
+const PERSONAL_QS = [
+  { title:"آینه حالِ این روزها", question:"اگر همین الان بی‌تعارف به «حالِ درون» این روزهایتان نگاه کنید، کدام تصویر به واقعیت شما نزدیک‌تر است؟",
+    options:[
+      {text:"حالم نسبتاً خوب و متعادل است و روزهایم را با آرامش و تمرکز جلو می‌برم.",score:1},
+      {text:"گاهی نوسان دارم؛ روزهایی خوبم و روزهایی کمی کلافه یا بی‌حوصله می‌شوم.",score:2},
+      {text:"در ظاهر سرم شلوغ است و کار می‌کنم، اما درونم خسته است و حس آرامش عمیق ندارم.",score:3},
+      {text:"سنگینی، دل‌زدگی، اضطراب یا بی‌حوصلگی دارم و حس می‌کنم روزها از دستم درمی‌روند.",score:4}],
+    interpretations:{
+      1:"حال درونی شما متعادل و آرام است. ثبات هیجانی نقطه قوت ارزشمندی است که باید حفظ شود.",
+      2:"نوسان خلق در محدوده طبیعی است، اما بهتر است محرک‌های نوسان را شناسایی و مدیریت کنید.",
+      3:"در ظاهر فعال هستید، اما درون خسته. انرژی روانی تحلیل رفته؛ به بازسازی و مراقبت نیاز دارید.",
+      4:"سنگینی و دل‌زدگی جدی است. این نشانه فرسودگی هیجانی است و مداخله تخصصی لازم است."}},
+  { title:"مواجهه با گیجی و سردرگمی", question:"وقتی با گیجی، بلاتکلیفی یا یک تصمیم مهم روبه‌رو می‌شوید، معمولاً چه کار می‌کنید؟",
+    options:[
+      {text:"مکث می‌کنم، اولویت را روشن می‌کنم و قدم کوچک بعدی را برمی‌دارم.",score:1},
+      {text:"کمی دو دل می‌مانم و از اطرافیان نظر می‌خواهم تا مطمئن‌تر انتخاب کنم.",score:2},
+      {text:"برای فرار از سنگینیِ تصمیم، به کارهای ریز، تکراری یا حاشیه‌ای پناه می‌برم.",score:3},
+      {text:"گیج می‌شوم، دست‌به‌عصا می‌مانم یا تصمیم را آن‌قدر عقب می‌اندازم که فرصت از دست برود.",score:4}],
+    interpretations:{
+      1:"رویکرد عمل‌گرایانه و تصمیم‌گیری مرحله‌ای دارید. این مهارت پایه‌ی رشد پایدار است.",
+      2:"مشورت‌خواهی متعادل نشانه بلوغ است؛ اما مراقب وابستگی به نظر دیگران باشید.",
+      3:"پناه بردن به کارهای حاشیه‌ای یعنی اجتناب از تصمیم. یک چارچوب تصمیم‌گیری ساده بسازید.",
+      4:"تعویق مزمن، فرصت‌ها را می‌سوزاند. نیاز فوری به مهارت تصمیم‌گیری و ساختار دارید."}},
+  { title:"مدیریت خود، مراقبه و بازگشت به تعادل", question:"وقتی ذهن شلوغ می‌شود یا فشار روانی بالا می‌رود، چطور خودتان را مدیریت می‌کنید؟",
+    options:[
+      {text:"سیستم و عادت مشخصی برای تنظیم ذهن، بدن و آرامش خودم دارم.",score:1},
+      {text:"فقط وقتی فشار زیاد شود کمی استراحت می‌کنم و دوباره به همان چرخه برمی‌گردم.",score:2},
+      {text:"سراغ مدیتیشن، مراقبه، تنفس یا نوشتن می‌روم، اما در ادامه دادن به آن مشکل دارم.",score:3},
+      {text:"هیچ ابزار یا عادت مشخصی ندارم؛ یا کلافه و پرخاشگر می‌شوم یا کاملاً خاموش و بی‌انرژی می‌شوم.",score:4}],
+    interpretations:{
+      1:"سیستم منظم مراقبت از خود دارید. این نقطه قوت کلیدی شماست.",
+      2:"واکنش به فشار دارید اما پیشگیرانه نیست. ساختن عادت پایدار آرامش را جدی بگیرید.",
+      3:"ابزار را می‌شناسید اما تداوم ندارید. مانع اصلی تداوم است نه آگاهی.",
+      4:"هیچ ابزار تنظیم هیجان ندارید. ریسک فرسودگی بالا است؛ فوراً یک تمرین ساده شروع کنید."}},
+  { title:"گفت‌وگوی درونی در روزهای سخت", question:"وقتی کارها طبق برنامه پیش نمی‌رود یا حالِ دلتان پایین می‌آید، معمولاً چطور با خودتان حرف می‌زنید؟",
+    options:[
+      {text:"واقع‌بین و همراه هستم و می‌پرسم چه کاری می‌توانم اصلاح کنم.",score:1},
+      {text:"کمی سرزنش می‌کنم، اما زود جمع‌وجور می‌کنم و دوباره شروع می‌کنم.",score:2},
+      {text:"مدام در ذهنم خودم را مقایسه می‌کنم و حس عقب ماندن یا ناکافی بودن می‌گیرم.",score:3},
+      {text:"مثل یک منتقدِ بی‌رحم با خودم برخورد می‌کنم و انگیزه‌ام را از دست می‌دهم.",score:4}],
+    interpretations:{
+      1:"خودگویی حمایتگر و واقع‌بین دارید. این سرمایه روانی ارزشمندی است.",
+      2:"خودسرزنش خفیف اما بازیابی سریع؛ وضعیت قابل بهبود است.",
+      3:"مقایسه مداوم، اعتمادبه‌نفس را می‌فرساید. بازسازی نگاه به خود ضروری است.",
+      4:"منتقد درونی بی‌رحم، خودارزشی و انگیزه را تخریب می‌کند. نیاز به مداخله و بازسازی گفتگوی درونی دارید."}},
+  { title:"مرز بین «خواستن» و «ترسیدن»", question:"در تصمیم‌های مهم این روزهایتان، کدام عامل بیشتر فرمان را دست دارد؟",
+    options:[
+      {text:"خواسته روشن، ارزش‌های خودم و مسیر هدفم.",score:1},
+      {text:"ترکیبی از هدف و کمی احتیاط یا ملاحظه اطرافیان.",score:2},
+      {text:"ترس از قضاوت شدن، اشتباه کردن یا پس رفتن.",score:3},
+      {text:"ترس از تغییر و ناآشنا بودنِ مسیر جدید که باعث می‌شود اصلاً قدم برندارم.",score:4}],
+    interpretations:{
+      1:"ارزش‌ها و خواسته روشن، محرک تصمیم شماست. سلامت روانی-عملکردی قابل تحسین.",
+      2:"تعادل بین هدف و احتیاط دارید؛ منطقی و سالم است.",
+      3:"ترس از قضاوت و شکست، تصمیم‌گیری را محدود می‌کند. مواجهه تدریجی لازم است.",
+      4:"ترس از تغییر فلج‌کننده است. بدون مداخله، رکود ادامه می‌یابد."}},
+  { title:"تداوم در برابر هیجان", question:"وقتی یک برنامه خوب (مثل مراقبه، ورزش، مطالعه یا تغییر عادت) را شروع می‌کنید، معمولاً چه اتفاقی می‌افتد؟",
+    options:[
+      {text:"با نظم و تداوم ادامه می‌دهم و اگر وقفه‌ای بیفتد، سریع برمی‌گردم.",score:1},
+      {text:"تا وقتی انگیزه و شرایط مساعد باشد خوب جلو می‌روم.",score:2},
+      {text:"با شوق زیاد شروع می‌کنم، اما بعد از مدتی سرد می‌شوم و رهایش می‌کنم.",score:3},
+      {text:"خیلی از برنامه‌هایم فقط در حدِ فکر و شروع‌های نیمه‌کاره باقی می‌مانند.",score:4}],
+    interpretations:{
+      1:"نظم و بازگشت سریع پس از وقفه، نقطه قوت شماست.",
+      2:"به انگیزه و شرایط مساعد وابسته‌اید. ساخت یک سیستم ثابت را شروع کنید.",
+      3:"الگوی شروع پرشور و رها کردن دارید. به سیستم تعهد و پاسخگویی نیاز دارید.",
+      4:"برنامه‌های نیمه‌کاره، ساختار و تعهدپذیری را می‌طلبد. از یک برنامه کوچک شروع کنید."}},
+  { title:"مسئولیت‌پذیری در برابر شرایط", question:"وقتی اوضاعِ زندگی یا روزمره‌تان بر وفق مراد نیست، اولین واکنش ذهنی شما چیست؟",
+    options:[
+      {text:"می‌پرسم سهمِ انتخاب و اقدام من در این وضعیت چیست و چه کاری از دستم برمی‌آید.",score:1},
+      {text:"بخشی را به شرایط می‌دهم و بخشی را به تلاش خودم.",score:2},
+      {text:"بیشتر دنبال دلیل و مقصر در بیرون و شرایط محیطی می‌گردم.",score:3},
+      {text:"احساس می‌کنم شرایط کاملاً خارج از کنترل من است و کاری از دستم ساخته نیست.",score:4}],
+    interpretations:{
+      1:"مسئولیت‌پذیری درونی و تمرکز بر اقدام دارید. این نقطه قوت کلیدی است.",
+      2:"تعادل سالمی بین شرایط و مسئولیت شخصی دارید.",
+      3:"گرایش به مقصر دانستن بیرونی، قدرت تغییر را کم می‌کند.",
+      4:"احساس درماندگی و کنترل بیرونی، مانع اصلی رشد است. نیاز به بازسازی حس کنترل درونی دارید."}},
+  { title:"تخلیه انرژی و فرسودگی پنهان", question:"در پایان روز معمولاً چه حسی نسبت به انرژی و حالِ خودتان دارید؟",
+    options:[
+      {text:"حس مفید بودن دارم و انرژی‌ام در سطح قابل قبول و متعادل است.",score:1},
+      {text:"خستگی عادی و طبیعیِ کار و فعالیت را دارم.",score:2},
+      {text:"حتی بعد از کارهای معمولی هم احساس خالی شدن و فرسودگی می‌کنم.",score:3},
+      {text:"از صبح که بیدار می‌شوم حس سنگینی و تمام شدن انرژی دارم.",score:4}],
+    interpretations:{
+      1:"انرژی پایان روز متعادل است. سلامت جسمی و روانی قابل قبول.",
+      2:"خستگی طبیعی و قابل قبول دارید.",
+      3:"فرسودگی خفیف تا متوسط؛ مرزها و بار کاری را بازبینی کنید.",
+      4:"فرسودگی جدی؛ خطر سلامت روانی و جسمی را جدی بگیرید و مداخله کنید."}},
+  { title:"آینه آینده در صورتِ ادامه همین روند", question:"اگر همین حالِ دل و همین الگوی مدیریتِ خود را ۶ ماه دیگر هم بدون تغییر واقعی ادامه بدهید، به کجا می‌رسید؟",
+    options:[
+      {text:"مسیرم روشن‌تر و منظم‌تر می‌شود.",score:1},
+      {text:"احتمالاً در همین نقطه می‌مانم و از بعضی فرصت‌ها جا می‌مانم.",score:2},
+      {text:"سردرگمی و خستگی‌ام بیشتر می‌شود و حس می‌کنم عمر و انرژی‌ام هدر رفته است.",score:3},
+      {text:"به فرسودگی عمیق‌تر، از دست رفتن اعتمادبه‌نفس و پشیمانی از بی‌اقدامی می‌رسم.",score:4}],
+    interpretations:{
+      1:"چشم‌انداز مثبت و مسیر روشن.",
+      2:"خطر رکود و از دست رفتن بخشی از فرصت‌ها وجود دارد.",
+      3:"افزایش سردرگمی و هدر رفتن انرژی؛ تغییر مسیر ضروری است.",
+      4:"فرسودگی عمیق و پشیمانی؛ نیاز فوری به تغییر مسیر و مداخله."}},
+  { title:"آمادگی برای تغییر واقعی", question:"اگر در ۲۰ دقیقه مشاوره رایگان، یک زاویه دید جدید و یک اقدامک ساده به شما داده شود، چقدر آماده اجرایش هستید؟",
+    options:[
+      {text:"کاملاً آماده‌ام و همین امروز اجرا می‌کنم.",score:1},
+      {text:"اگر با شرایطم جور باشد، حتماً امتحان می‌کنم.",score:2},
+      {text:"دوست دارم تغییر کند، اما می‌ترسم وسط راه باز هم رهایش کنم.",score:3},
+      {text:"نمی‌دانم واقعاً می‌توانم تغییر کنم یا نه، اما به کمک نیاز دارم.",score:4}],
+    interpretations:{
+      1:"آمادگی بالا دارید. زمان اقدام و شروع مسیر رشد است.",
+      2:"آمادگی مشروط؛ با شرایط سازگار همراه می‌شوید.",
+      3:"تمایل با ترس از رها کردن؛ نیاز به ساختار تعهد و همراهی دارید.",
+      4:"تردید در توان تغییر؛ نیاز به حمایت و کوچینگ تخصصی دارید."}}
+];
+
+const BUSINESS_QS = [
+  { title:"جریان جذب و دیده‌شدن", question:"در این روزها چقدر آدمِ مناسب با پیشنهاد، محصول یا خدمت شما آشنا می‌شوند؟",
+    options:[
+      {text:"جریان ورودیِ نسبتاً منظم و قابل پیش‌بینی دارم.",score:1},
+      {text:"گاهی حرکتی می‌زنم، اما ثبات و نظم مشخصی ندارم.",score:2},
+      {text:"مخاطب می‌آید و پیام می‌دهد، اما بخش زیادی بدون خرید یا اقدام واقعی می‌روند.",score:3},
+      {text:"تقریباً هیچ‌کس؛ جذب و فروش من کاملاً اتفاقی یا وابسته به شانس است.",score:4}],
+    interpretations:{
+      1:"قیف ورودی منظم و قابل پیش‌بینی دارید. پایه کسب‌وکار سالم است.",
+      2:"فعالیت پراکنده و بی‌ثبات؛ سیستم جذب منظم لازم است.",
+      3:"ترافیک بی‌کیفیت یا نرخ تبدیل پایین؛ نشتی جدی در قیف فروش.",
+      4:"جذب اتفاقی و وابسته به شانس؛ نشتی جدی در بالای قیف."}},
+  { title:"شفافیت نتیجه و ارزش پیشنهادی", question:"وقتی مخاطب با شما آشنا می‌شود، چقدر سریع و روشن می‌فهمد که چه نتیجه‌ای به دست می‌آورد؟",
+    options:[
+      {text:"نتیجه و ارزش کارم کاملاً شفاف و ملموس است.",score:1},
+      {text:"تا حدی می‌فهمد، اما برای روشن شدن باید توضیح زیاد بدهم.",score:2},
+      {text:"هنوز نتوانسته‌ام مزیت و نتیجه کارم را طوری بگویم که از رقبا متمایز و قانع‌کننده باشد.",score:3},
+      {text:"مخاطب گیج می‌شود یا نمی‌فهمد چرا باید همین حالا سراغ من بیاید.",score:4}],
+    interpretations:{
+      1:"پیشنهاد شفاف و متمایز. نقطه قوت کلیدی شماست.",
+      2:"تا حدی روشن است اما نیاز به پیام دقیق‌تر و متمرکزتر دارد.",
+      3:"تمایز ضعیف است؛ رقابت در چنین بازاری سخت می‌شود.",
+      4:"مخاطب گیج می‌شود؛ پیشنهاد جذابیت کافی برای اقدام ندارد."}},
+  { title:"اعتمادسازی و کاهش ریسک مشتری", question:"مشتری یا مخاطب برای اعتماد کردن و تصمیم گرفتن چه حسی نسبت به پیشنهاد شما دارد؟",
+    options:[
+      {text:"با اطمینان جلو می‌آید چون نمونه کار، ضمانت یا مسیر روشن دارم.",score:1},
+      {text:"مردد است و نیاز به زمان و توضیحات بیشتر دارد.",score:2},
+      {text:"برای راضی کردنش مجبورم تخفیف، امتیاز یا توضیح اضافه بدهم.",score:3},
+      {text:"بی‌اعتماد یا بی‌تفاوت است و به راحتی «نه» می‌گوید یا غیبش می‌زند.",score:4}],
+    interpretations:{
+      1:"اعتماد سریع با نمونه کار و ضمانت. سرمایه برند قوی دارید.",
+      2:"تردید مخاطب نیازمند زمان بیشتر یا محتوای اعتمادساز است.",
+      3:"نیاز به تخفیف برای راضی کردن، نشانه ضعف در اعتمادسازی است.",
+      4:"بی‌اعتمادی رایج؛ بحران اعتماد که نیازمند بازسازی جدی است."}},
+  { title:"اصطکاک و زحمتِ مسیر خرید", question:"شروع کار، خرید یا دریافت خدمت از شما چقدر برای مخاطب ساده، سریع و کم‌دردسر است؟",
+    options:[
+      {text:"مسیر ساده، روشن و سریع است.",score:1},
+      {text:"کمی طولانی یا نیازمند هماهنگی‌های متعدد است.",score:2},
+      {text:"پیچیده یا مبهم است و خیلی‌ها وسط راه سرد می‌شوند.",score:3},
+      {text:"آن‌قدر دست‌وپاگیر یا نامشخص است که مخاطب را منصرف می‌کند.",score:4}],
+    interpretations:{
+      1:"مسیر ساده و کم‌دردسر. نقطه قوت در تجربه مشتری.",
+      2:"کمی طولانی؛ بهینه‌سازی مسیر می‌تواند فروش را افزایش دهد.",
+      3:"پیچیده و مبهم؛ ریزش مخاطب زیاد است.",
+      4:"دست‌وپاگیر و منصرف‌کننده؛ نیازمند بازطراحی فوری مسیر خرید."}},
+  { title:"پیگیریِ سرنخ‌ها", question:"بعد از اولین تماس، پیام یا آشنایی با مخاطب علاقه‌مند، در عمل چه اتفاقی می‌افتد؟",
+    options:[
+      {text:"پیگیری منظم و زمان‌بندی‌شده دارم تا هیچ فرصتی از دست نرود.",score:1},
+      {text:"گاهی پیگیری می‌کنم، اما نامنظم و فراموش‌شدنی است.",score:2},
+      {text:"اغلب بعد از اولین جواب یا سکوت مخاطب، پیگیری را رها می‌کنم.",score:3},
+      {text:"هیچ سیستم یا یادآوری برای پیگیری ندارم و خیلی‌ها سرد می‌شوند و می‌روند.",score:4}],
+    interpretations:{
+      1:"پیگیری منظم و سیستماتیک. نقطه قوت کلیدی.",
+      2:"نامنظم؛ ساخت یک سیستم پیگیری ساده ضروری است.",
+      3:"رها کردن پیگیری، نشتی مالی جدی ایجاد می‌کند.",
+      4:"هیچ سیستم پیگیری ندارید؛ سرنخ‌ها سرد می‌شوند و سرمایه از دست می‌رود."}},
+  { title:"تبدیل و حفظ مشتری", question:"وضعیت خرید مجدد، وفاداری یا معرفی توسط مشتری‌های قبلی شما چطور است؟",
+    options:[
+      {text:"مشتری‌های قبلی دوباره برمی‌گردند یا دیگران را معرفی می‌کنند.",score:1},
+      {text:"گاهی خرید تکراری یا معرفی اتفاق می‌افتد، اما برنامه‌ای برایش ندارم.",score:2},
+      {text:"بیشتر فروش‌هایم تک‌باره است و بعد از خرید، ارتباط منظم ادامه پیدا نمی‌کند.",score:3},
+      {text:"تقریباً هیچ مشتری تکراری یا معرفی‌کننده‌ای ندارم و هر بار باید از صفر شروع کنم.",score:4}],
+    interpretations:{
+      1:"خرید مجدد و معرفی قوی. پایه رشد پایدار.",
+      2:"گاهی تکرار؛ ولی بدون برنامه. یک سیستم ساده وفاداری بسازید.",
+      3:"فروش تک‌باره و قطع ارتباط؛ هزینه جذب دوباره بالا می‌رود.",
+      4:"هیچ مشتری تکراری؛ هزینه جذب بسیار بالا و رشد ناپایدار."}},
+  { title:"وابستگی به حضور شما", question:"اگر یک تا دو هفته نتوانید با تمام توان در کار حضور داشته باشید، چه اتفاقی می‌افتد؟",
+    options:[
+      {text:"سیستم، روند یا تیم طوری چیده شده که کارها از حرکت نمی‌ایستند.",score:1},
+      {text:"کندتر می‌شود، اما بخش‌هایی از کار جلو می‌رود.",score:2},
+      {text:"کارها روی دوش خودم است و بدون من تقریباً متوقف می‌شود.",score:3},
+      {text:"نبودن من یعنی توقف کاملِ پیگیری، فروش و پیشبرد کارها.",score:4}],
+    interpretations:{
+      1:"سیستم و تیم مستقل از حضور شما. رشد پایدار ممکن است.",
+      2:"کندی بدون شما اما کار ادامه دارد. ساختار نسبتاً سالم.",
+      3:"وابستگی بالا به حضور شما؛ ریسک جدی برای رشد.",
+      4:"توقف کامل بدون شما؛ ریسک بحرانی که مانع مقیاس‌پذیری است."}},
+  { title:"سقف ذهنی و ترس‌های پنهان در رشد", question:"وقتی صحبت از رشد بیشتر، افزایش قیمت یا بزرگ‌تر شدن کار می‌شود، چه چیزی در ذهن شما ترمز می‌کشد؟",
+    options:[
+      {text:"ترس فلج‌کننده‌ای ندارم و با حساب‌وکتاب جلو می‌روم.",score:1},
+      {text:"کمی تردید دارم، اما با بررسی و مشورت کنار می‌آیم.",score:2},
+      {text:"ترس از شکست، پس رفتن یا جواب ندادنِ تلاش‌ها ذهنم را مشغول می‌کند.",score:3},
+      {text:"ترس از دیده شدن، مسئولیت بیشتر یا قضاوت شدن جلوی اقدامم را می‌گیرد.",score:4}],
+    interpretations:{
+      1:"رشد با حساب‌وکتاب و منطقی. نقطه قوت ذهنی ارزشمند.",
+      2:"تردید قابل مدیریت؛ سالم و طبیعی.",
+      3:"ترس از شکست، مانع رشد فعال است. نیاز به بازسازی نگاه به شکست دارید.",
+      4:"ترس از دیده شدن فلج‌کننده است؛ نیاز به کار عمیق روی ذهنیت."}},
+  { title:"نتیجه ادامه همین روند در ۶ ماه آینده", question:"اگر همین روش جذب، فروش، پیگیری و مدیریت را ۶ ماه دیگر هم بدون تغییر ادامه بدهید، به کجا می‌رسید؟",
+    options:[
+      {text:"درآمد و نظم کسب‌وکارم رشد پایدار و قابل پیش‌بینی پیدا می‌کند.",score:1},
+      {text:"رشد بسیار کندی خواهم داشت و بخش زیادی از ظرفیتم استفاده نمی‌شود.",score:2},
+      {text:"در همین سطحِ فعلی درجا می‌زنم و فشار کاری‌ام بیشتر می‌شود.",score:3},
+      {text:"هم پول و فرصت بیشتری از دست می‌دهم و هم به خاطر درجا زدن بیشتر خسته و ناامید می‌شوم.",score:4}],
+    interpretations:{
+      1:"رشد پایدار و قابل پیش‌بینی.",
+      2:"رشد کند و ظرفیت هدر رفته؛ بازبینی استراتژی لازم است.",
+      3:"درجا زدن و افزایش فشار کاری؛ نیازمند تغییر رویکرد.",
+      4:"از دست رفتن پول و فرصت و ناامیدی؛ نیاز فوری به تغییر مسیر."}}
+];
+
+const EXTRA_Q = {
+  title:"نقطه عطفِ ۲۰ دقیقه مشاوره رایگان",
+  question:"اگر در ۲۰ دقیقه مشاوره رایگان، فقط یک گلوگاه مشخص و اصلاح شود، اولویت اصلی شما کدام است؟",
+  options:[
+    {text:"شفاف کردن پیشنهاد، مزیت رقابتی و اعتمادسازی برای فروش راحت‌تر.",score:1},
+    {text:"ساختن سیستم منظم برای جذب و پیگیریِ ازدست‌نرفتنِ مشتری‌ها.",score:2},
+    {text:"خلاص شدن از بلاتکلیفی و تعریف یک نقشه عملِ ساده و واقعی برای رشد.",score:3},
+    {text:"هم‌راستا کردنِ ذهنیت و حالِ درونی خودم با رشد و درآمد کسب‌وکار.",score:4}],
+  interpretations:{
+    1:"اولویت: شفاف‌سازی پیشنهاد و اعتمادسازی برای فروش آسان‌تر.",
+    2:"اولویت: سیستم منظم جذب و پیگیری مشتری.",
+    3:"اولویت: نقشه عمل شفاف و خروج از بلاتکلیفی.",
+    4:"اولویت: هم‌راستاسازی ذهنیت و حال درونی با رشد کسب‌وکار."}};
+
+const ALL_QUESTIONS = [
+  ...PERSONAL_QS.map(q => ({...q, section:'personal', sectionName:'توسعه فردی'})),
+  ...BUSINESS_QS.map(q => ({...q, section:'business', sectionName:'کسب‌وکار'}))
+];
+
+const QUIZ_META = {
+  title: "چکاپ جامع توسعه فردی و کسب‌وکار",
+  section: "ارزیابی ۱۹ سؤالی",
+  personalMax: PERSONAL_QS.length * 4,
+  businessMax: BUSINESS_QS.length * 4,
+  totalMax:    ALL_QUESTIONS.length * 4,
+  totalMin:    ALL_QUESTIONS.length,
+  businessOffset: PERSONAL_QS.length
+};
+
+function classifyLevel(avg) {
+  if (avg >= 3) return 'critical';
+  if (avg >= 2.5) return 'warning';
+  if (avg >= 1.8) return 'ok';
+  return 'strength';
+}
+
+// داده‌های کاربران، نتایج و مدیران از پایگاه داده امن بارگذاری می‌شوند؛
+// localStorage دیگر منبع اعتبارسنجی مدیر یا مخزن اصلی کارنامه‌ها نیست.
+let state = { admins: [], users: [], results: [] };
+let currentUser = null;
+let currentIndex = 0;
+let currentAnswers = [];
+let currentExtra = null;
+let currentRecord = null;
+let currentAdmin = null;
+let isAdmin = false;
+let cache = { users: [], results: [], admins: [] };
+let currentAdminPhone = null;
+let resultAlreadySaved = false;
+
+const $ = id => document.getElementById(id);
+const LETTERS = ['الف', 'ب', 'پ', 'ت'];
+
+function show(id) {
+  document.querySelectorAll('body > .wrap > section').forEach(s => s.classList.add('hidden'));
+  $(id).classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function digits(s) {
+  return String(s || '')
+    .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+    .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
+    .replace(/\D/g, '');
+}
+function normPhone(s) {
+  let n = digits(s);
+  if (n.startsWith('98')) return '+' + n;
+  if (n.startsWith('0')) return '+98' + n.slice(1);
+  return '+' + n;
+}
+function phoneMatches(a, b) { return digits(a) === digits(b); }
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function dateFa(iso) { try { return new Date(iso).toLocaleString('fa-IR'); } catch (e) { return iso || '—'; } }
+async function sha256(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+
+/* ============ ثبت خودکار اطلاعات ============
+   آدرس Web App در Google Apps Script را اینجا بگذارید (راهنما در فایل apps-script.gs).
+   اگر Supabase هم تنظیم شده باشد، همان هم استفاده می‌شود. */
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycbz3njGVmwIv9U9kzL220XQmrlfmK7GTKj-sEv8W0_tJSoswonbwsuRce50s90S3wKPPIQ/exec";
+
+async function sendToSheets(type, data) {
+  if (!SHEETS_URL) return false;
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ type, ...data })
+    });
+    return true;
+  } catch (e) { console.error('sendToSheets', e); return false; }
+}
+function backupLocal(key, obj) {
+  try {
+    const arr = JSON.parse(localStorage.getItem(key) || '[]');
+    arr.push({ ...obj, saved_at: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(arr));
+  } catch (e) {}
+}
+async function registerLeadImmediately(lead) {
+  let ok = false;
+  if (supabaseClient) {
+    try {
+      const { error } = await supabaseClient.rpc('register_assessment_lead', {
+        p_full_name: lead.full_name, p_phone_e164: lead.phone
+      });
+      if (!error) ok = true; else console.error(error);
+    } catch (e) { console.error(e); }
+  }
+  if (await sendToSheets('lead', lead)) ok = true;
+  backupLocal('akam_leads_backup', lead);
+  return { central: ok };
+}
+
+async function identityNext() {
+  const f = $('firstName').value.trim();
+  const l = $('lastName').value.trim();
+  const phoneRaw = $('phone').value.trim();
+  const p = normPhone(phoneRaw);
+  if (!f || !l) return alert('لطفاً نام و نام خانوادگی را کامل وارد کنید.');
+  if (!phoneRaw || !/^\+989\d{9}$/.test(p)) return alert('لطفاً شماره موبایل معتبر وارد کنید (مثال: 09123456789).');
+
+  const button = $('startAssessmentBtn');
+  const msg = $('identityMsg');
+  const lead = { full_name: f + ' ' + l, phone: p };
+  button.disabled = true;
+  msg.textContent = 'در حال ثبت اطلاعات...';
+  msg.style.color = 'var(--muted)';
+  let res = { central: false };
+  try { res = await registerLeadImmediately(lead); } catch (e) { console.error(e); }
+  currentUser = lead;
+  msg.textContent = '';
+  startQuiz();
+  $('modeBadge').textContent = res.central ? 'اطلاعات شما ثبت شد ✓' : 'آزمون در حال انجام';
+  button.disabled = false;
+}
+
+function startQuiz() {
+  resultAlreadySaved = false;
+  currentRecord = null;
+  currentIndex = 0;
+  currentExtra = null;
+  currentAnswers = Array(ALL_QUESTIONS.length).fill(null);
+  $('testName').textContent = QUIZ_META.title;
+  $('sectionName').textContent = QUIZ_META.section;
+  show('quiz');
+  drawQuestion();
+}
+
+function drawQuestion() {
+  const q = ALL_QUESTIONS[currentIndex];
+  $('counter').textContent = 'سؤال ' + (currentIndex + 1) + ' از ' + ALL_QUESTIONS.length;
+  $('progress').style.width = ((currentIndex + 1) / ALL_QUESTIONS.length * 100) + '%';
+  $('sectionBadge').textContent = q.sectionName === 'توسعه فردی' ? 'محور توسعه فردی' : 'محور کسب‌وکار';
+  const qtag = $('qtag');
+  qtag.textContent = 'سؤال ' + (currentIndex + 1) + ' · ' + q.sectionName;
+  qtag.className = 'qtag' + (q.section === 'business' ? ' business' : '');
+  $('qtitle').textContent = q.title;
+  $('qtext').textContent = q.question;
+  $('options').innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.className = 'option' + (currentAnswers[currentIndex] === i ? ' selected' : '');
+    b.innerHTML = '<span class="letter">' + LETTERS[i] + '</span><span class="optext"></span><span class="tick">✓</span>';
+    b.querySelector('.optext').textContent = o.text;
+    b.onclick = () => {
+      currentAnswers[currentIndex] = i;
+      drawQuestion(); 
+      setTimeout(() => { next(); }, 400);
+    };
+    $('options').appendChild(b);
+  });
+}
+
+function next() {
+  if (currentAnswers[currentIndex] === null || currentAnswers[currentIndex] === undefined) {
+    alert('لطفاً ابتدا به این سؤال پاسخ دهید.');
+    return;
+  }
+  if (currentIndex < ALL_QUESTIONS.length - 1) {
+    currentIndex++;
+    drawQuestion();
+  } else {
+    drawExtra();
+    show('extra');
+  }
+}
+
+function quitTest() {
+  if (confirm('از آزمون خارج شوید؟ پاسخ‌های این آزمون و اطلاعات موقت واردشده پاک می‌شود و چیزی ثبت نخواهد شد.')) {
+    currentUser = null;
+    currentAnswers = [];
+    currentRecord = null;
+    currentExtra = null;
+    currentIndex = 0;
+    resultAlreadySaved = false;
+    show('home');
+  }
+}
+
+function drawExtra() {
+  $('extraTitle').textContent = EXTRA_Q.title;
+  $('extraText').textContent = EXTRA_Q.question;
+  $('extraOptions').innerHTML = '';
+  EXTRA_Q.options.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.className = 'option' + (currentExtra === i ? ' selected' : '');
+    b.innerHTML = '<span class="letter">' + LETTERS[i] + '</span><span class="optext"></span><span class="tick">✓</span>';
+    b.querySelector('.optext').textContent = o.text;
+    b.onclick = () => {
+      currentExtra = i;
+      drawExtra(); 
+      setTimeout(() => { finishExtra(); }, 400);
+    };
+    $('extraOptions').appendChild(b);
+  });
+}
+function finishExtra() {
+  if (currentAnswers.length !== ALL_QUESTIONS.length || currentAnswers.some(a => a === null || a === undefined)) {
+    alert('پاسخ همه سؤال‌ها کامل ثبت نشده است. لطفاً آزمون را دوباره بررسی کنید.');
+    return;
+  }
+  makeReport();
+}
+
+function restartTest() {
+  resultAlreadySaved = false;
+  currentUser = null;
+  currentIndex = 0;
+  currentAnswers = [];
+  currentExtra = null;
+  currentRecord = null;
+  show('identity');
+}
+
+/* ============================================================
+   REPORT – تحلیل کاملاً پویا با تعریف یکتای هر عدد
+   ============================================================ */
+function makeReport() {
+  if (!currentUser || currentAnswers.length !== ALL_QUESTIONS.length || currentAnswers.some(a => a === null || a === undefined)) {
+    alert('برای ساخت کارنامه، ابتدا همه سؤال‌ها را کامل پاسخ دهید.');
+    return;
+  }
+  const sum = currentAnswers.reduce((a, n, i) => a + ALL_QUESTIONS[i].options[n].score, 0);
+  const personalSum = currentAnswers.reduce((a, n, i) => a + (ALL_QUESTIONS[i].section === 'personal' ? ALL_QUESTIONS[i].options[n].score : 0), 0);
+  const businessSum = currentAnswers.reduce((a, n, i) => a + (ALL_QUESTIONS[i].section === 'business' ? ALL_QUESTIONS[i].options[n].score : 0), 0);
+
+  currentRecord = {
+    id: crypto.randomUUID ? crypto.randomUUID() : 'r_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+    participant: { ...currentUser },
+    answers: currentAnswers.slice(),
+    score: sum,
+    personal_score: personalSum,
+    business_score: businessSum,
+    max_score: QUIZ_META.totalMax,
+    personal_max: QUIZ_META.personalMax,
+    business_max: QUIZ_META.businessMax,
+    extra_choice: currentExtra,
+    extra_score: currentExtra === null ? null : EXTRA_Q.options[currentExtra].score,
+    extra_text: currentExtra === null ? null : EXTRA_Q.options[currentExtra].text,
+    created_at: new Date().toISOString()
+  };
+
+  /* ---------- تحلیل اختصاصی و غیرتکراری برای تمام امتیازهای ممکن ۱۹ تا ۷۶ ---------- */
+  const SCORE_PROFILES = [{"color":"#5fc596","tier":"تعادل و ثبات","prefix":"پاسخ‌ها تصویری از تعادل نسبتاً خوب ارائه می‌کنند. ","notes":["توانمندی‌های فعلی شما در بیشتر موقعیت‌ها همراهتان هستند و بهتر است آن‌ها را آگاهانه حفظ کنید.","پایه‌های فردی و کاری هماهنگ به نظر می‌رسند؛ مراقبت از همین هماهنگی مهم‌ترین نکته این نتیجه است.","بخش عمده پاسخ‌ها به مدیریت مناسب اشاره دارد و چند جزئیات کوچک ارزش بازبینی دارند.","نشانه‌های مثبت غالب‌اند؛ مراقب باشید موفقیت‌های فعلی باعث نادیده گرفتن نیازهای تازه نشوند.","روش فعلی در بسیاری از موقعیت‌ها کارآمد است و ظرفیت تبدیل شدن به عادت‌های پایدار را دارد.","وضعیت عمومی مناسب است؛ بهتر است پیشرفت را با معیارهای روشن دنبال کنید، نه فقط احساس روزانه.","نقاط قوت شما قابل اتکا هستند و اصلاح‌های کوچک می‌توانند کیفیت نتیجه را بیشتر کنند.","پاسخ‌ها از مدیریت قابل قبول حکایت دارند؛ شفاف نگه داشتن اولویت‌ها به حفظ این روند کمک می‌کند.","در مجموع مسیر مناسبی دیده می‌شود؛ انتخاب هدف‌های محدود و دقیق بهتر از افزودن تعهدهای متعدد است.","بیشتر زمینه‌ها در محدوده مطلوب‌اند؛ بازبینی دوره‌ای از انباشته شدن مسئله‌های کوچک جلوگیری می‌کند."],"actions":["یک رفتار مؤثر را ثبت کنید و برای تداوم آن زمان مشخص بگذارید.","هر هفته یک بار تعادل میان نیازهای فردی و کار را مرور کنید.","یک هدف رشد واقع‌بینانه انتخاب و پیشرفت آن را ماهانه بسنجید.","نقاط قوت خود را به روال‌هایی ساده و قابل تکرار تبدیل کنید.","از تغییرهای شتاب‌زده پرهیز کنید و روی استمرار رفتارهای مفید تمرکز کنید.","برای حفظ تمرکز، سه اولویت اصلی هفته را از قبل مشخص کنید.","یک فرصت کوچک بهبود را انتخاب و اثر آن را یادداشت کنید.","برای مرور تصمیم‌ها و برنامه‌ها یک زمان ثابت در هفته تعیین کنید.","عادت‌های موفق را با معیار ساده‌ای پیگیری کنید.","در کنار حفظ نقاط قوت، یک مهارت تازه را به‌آرامی توسعه دهید."]},{"color":"#d4c85c","tier":"فرصت بهبود","prefix":"نتیجه از وضعیت قابل قبول همراه با چند فرصت اصلاح خبر می‌دهد. ","notes":["چند بخش از برنامه‌ها احتمالاً به اندازه نیت اولیه منظم اجرا نمی‌شوند و به پیگیری بیشتری نیاز دارند.","در کنار توانمندی‌ها، برخی جزئیات روزمره ممکن است بخشی از انرژی یا زمان شما را مصرف کنند.","وضعیت کلی قابل مدیریت است؛ اما روشن کردن مرز میان کارهای مهم و فرعی می‌تواند نتیجه را بهتر کند.","برخی پاسخ‌ها از نوسان در استمرار حکایت دارند و ایجاد ساختار سبک می‌تواند کمک‌کننده باشد.","بخشی از ظرفیت شما به دلیل پراکندگی اولویت‌ها استفاده نمی‌شود و ارزش سامان‌دهی دارد.","چند مانع محدود دیده می‌شود؛ اگر زودتر شناسایی شوند، از تبدیل شدن به مشکل بزرگ‌تر جلوگیری می‌شود.","میان برنامه‌ریزی و اجرا کمی فاصله دیده می‌شود؛ لازم است قدم‌های عملی کوچک‌تر شوند.","برخی مسئولیت‌ها یا تصمیم‌های معوق ممکن است تمرکز را کاهش دهند و به تعیین تکلیف نیاز دارند.","پاسخ‌ها نشان می‌دهند تکیه بر انگیزه کافی نیست و روال‌های مشخص باید جای آن را بگیرند.","چند نقطه اصطکاک در مسیر وجود دارد؛ شناسایی علت تکرار آن‌ها از اصلاح سطحی مفیدتر است."],"actions":["یک کار نیمه‌تمام را به کوچک‌ترین قدم بعدی تبدیل کنید.","فعالیت‌های هفته را به ضروری، مهم و قابل‌تعویق تقسیم کنید.","برای یک عادت یا کار اصلی یادآور ثابت بگذارید.","یک تصمیم عقب‌افتاده را با تعیین موعد مشخص نهایی کنید.","یک فعالیت کم‌اثر را کاهش دهید تا زمان بیشتری برای اولویت‌ها بماند.","فاصله برنامه و اجرا را در پایان هر روز کوتاه مرور کنید.","برای یک هدف، معیار سنجش هفتگی تعریف کنید.","مسئولیت‌ها و انتظارهای مبهم را شفاف کنید.","یک روال ساده بسازید که بدون انگیزه زیاد هم قابل انجام باشد.","ریشه یک مانع تکرارشونده را بررسی و فقط همان را اصلاح کنید."]},{"color":"#e8a24a","tier":"نیازمند بازبینی","prefix":"پاسخ‌ها نشان می‌دهند بخشی از مسیر به بازنگری آگاهانه نیاز دارد. ","notes":["چند چالش هم‌زمان دیده می‌شود و ممکن است رسیدگی پراکنده به آن‌ها نتیجه روشنی ایجاد نکند.","برخی تصمیم‌ها یا عادت‌ها به شکل تکراری مانع پیشرفت می‌شوند و باید علت اصلی آن‌ها روشن شود.","تفاوت میان هدف‌های موردنظر و عملکرد فعلی پررنگ‌تر شده است؛ بازتعریف گام‌ها ضروری است.","در بخشی از مسیر، پیگیری کافی به چشم نمی‌خورد و همین موضوع می‌تواند فرصت‌ها را کم‌رنگ کند.","فشار روزمره ممکن است جای برنامه‌ریزی را گرفته باشد؛ لازم است دوباره برای اولویت‌ها فضا ایجاد شود.","بعضی فرایندها بیش از حد پیچیده یا نامشخص به نظر می‌رسند و ساده‌سازی آن‌ها مفید است.","چند پاسخ از وابستگی به شرایط یا انگیزه حکایت دارند؛ ساختار ثابت می‌تواند این وابستگی را کمتر کند.","برای پیشرفت، لازم است مسئله‌های فردی و کاری جداگانه بررسی شوند تا اولویت‌ها اشتباه انتخاب نشوند.","موانع تکراری بخشی از ظرفیت شما را می‌گیرند؛ انتخاب یک گلوگاه اصلی نقطه شروع مناسبی است.","وضعیت نیازمند توجه است، اما با اولویت‌بندی و اقدام مرحله‌ای می‌توان آن را مدیریت کرد."],"actions":["دو چالش اصلی را بنویسید و برای شروع فقط یکی را انتخاب کنید.","یک فرایند را از ابتدا تا انتها بررسی و مرحله مبهم آن را ساده کنید.","برای تصمیم مهم بعدی، گزینه‌ها و معیار انتخاب را مکتوب کنید.","یک برنامه کوتاه هفت‌روزه با اقدام روزانه کوچک تنظیم کنید.","کارهای غیرضروری را موقتاً کنار بگذارید و ظرفیت ایجاد کنید.","برای پیگیری یک فرصت یا تعهد، زمان و روش مشخص تعیین کنید.","از یک فرد قابل اعتماد بازخورد بگیرید و برنامه را اصلاح کنید.","مسائل توسعه فردی و کسب‌وکار را در دو فهرست جداگانه بنویسید.","یک گلوگاه اثرگذار را انتخاب و نتیجه اصلاح آن را اندازه‌گیری کنید.","در پایان هفته بررسی کنید کدام اقدام واقعاً اجرا شده و چرا."]},{"color":"#e58a55","tier":"توجه جدی‌تر","prefix":"نتیجه از وجود چند اصطکاک مهم خبر می‌دهد که بهتر است به تعویق نیفتند. ","notes":["بعضی دشواری‌ها احتمالاً روی هم اثر می‌گذارند؛ تشخیص رابطه میان آن‌ها از درمان جداگانه نشانه‌ها مهم‌تر است.","روش فعلی در چند زمینه پاسخ‌گو نیست و لازم است فرض‌های قبلی با تجربه واقعی مقایسه شوند.","انرژی و زمان ممکن است صرف کارهای کم‌اثر شود؛ بازتنظیم تعهدها می‌تواند فضای تصمیم‌گیری ایجاد کند.","پاسخ‌ها به ضعف در استمرار یا پیگیری اشاره می‌کنند و نیاز به یک نظام ساده پاسخگویی دیده می‌شود.","چند حوزه نیازمند تغییرند؛ شروع هم‌زمان همه آن‌ها احتمال نیمه‌کاره ماندن را افزایش می‌دهد.","فشار انباشته ممکن است تشخیص اولویت را دشوار کرده باشد؛ ابتدا باید تصویر مسئله شفاف شود.","برخی فرایندها نتیجه کافی نمی‌دهند و ادامه بدون اصلاح احتمالاً همان الگوی قبلی را تکرار می‌کند.","پاسخ‌ها از نیاز به پشتیبانی و نظم بیشتر حکایت دارند؛ لازم نیست همه بار تغییر را به‌تنهایی بردارید.","اگر گلوگاه‌های اصلی مشخص نشوند، تلاش زیاد ممکن است به پیشرفت متناسب منجر نشود.","اکنون زمان بازبینی جدی روش‌هاست؛ تغییر باید مشخص، محدود و قابل ارزیابی باشد."],"actions":["یک تعهد کم‌اثر را متوقف کنید و زمان آزادشده را به مسئله اصلی بدهید.","فرض‌های ناکارآمد را با شواهد و بازخورد واقعی بازبینی کنید.","ظرفیت هفتگی خود را دوباره محاسبه و برنامه را سبک‌تر کنید.","یک سیستم پیگیری ساده با زمان‌بندی ثابت راه‌اندازی کنید.","تغییرها را مرحله‌بندی کنید و تا تثبیت گام اول سراغ گام بعد نروید.","برای مرتب کردن اولویت‌ها از یک همراه آگاه کمک بگیرید.","فرایند دارای بیشترین اتلاف زمان یا انرژی را بازطراحی کنید.","برای اقدامات اصلی مسئول، موعد و معیار نتیجه مشخص کنید.","پیش از تلاش بیشتر، علت اصلی تکرار مشکل را پیدا کنید.","نتیجه یک تغییر محدود را پس از دو هفته با وضعیت قبلی مقایسه کنید."]},{"color":"#e57373","tier":"چالش‌های پررنگ","prefix":"پاسخ‌ها از چند چالش اثرگذار حکایت دارند و پیگیری منظم می‌تواند کمک کند مسیر روشن‌تر شود. ","notes":["چند مانع مهم در کنار هم قرار گرفته‌اند و احتمالاً لازم است فشارهای غیرضروری کاهش پیدا کنند.","ادامه بی‌تغییر روش فعلی ممکن است مسئله‌ها را حفظ کند؛ بازطراحی گام‌های اصلی ضروری به نظر می‌رسد.","پاسخ‌ها نشان می‌دهند برای بعضی موضوع‌ها حمایت بیرونی و نگاه تازه می‌تواند مفید باشد.","تراکم چالش‌ها ممکن است تمرکز را دشوار کند؛ محدود کردن هدف‌ها به چند اقدام پایه اهمیت دارد.","چند پاسخ نیاز به بررسی نزدیک‌تر دارند؛ برداشت نهایی را با شرایط واقعی هر پاسخ تطبیق دهید.","احتمالاً بخشی از ظرفیت با نگرانی‌ها یا کارهای معوق درگیر است؛ ایجاد نظم و حمایت اهمیت دارد.","بهبود پایدار به پیگیری مستمر نیاز دارد و اقدامات کوتاه و قابل سنجش مناسب‌ترند.","برخی حوزه‌ها به اصلاح ساختاری نیاز دارند؛ بهتر است کار را با یک اولویت قابل مدیریت شروع کنید.","پاسخ‌ها به انباشت موانع اشاره می‌کنند؛ تفکیک مسائل فوری از بلندمدت ضروری است.","این نتیجه دعوتی برای بازنگری دقیق است، نه برچسبی درباره توانایی یا ارزش شخصی شما."],"actions":["فشارهای غیرضروری را کاهش دهید و یک مسئله فوری را مشخص کنید.","برای بازطراحی روش فعلی، یک برنامه دو مرحله‌ای بنویسید.","گفت‌وگو با کوچ یا متخصص واجد صلاحیت را برای روشن شدن اولویت‌ها در نظر بگیرید.","هدف‌های کوتاه‌مدت را محدود کنید و هر هفته پیشرفت را بسنجید.","پاسخ‌های با امتیاز بالاتر را همراه با زمینه واقعی آن‌ها مرور کنید.","از یک فرد قابل اعتماد برای پیگیری و پاسخگویی کمک بگیرید.","برای هر اقدام زمان پایان و نشانه قابل مشاهده موفقیت تعیین کنید.","یک حوزه قابل مدیریت را برای شروع انتخاب و بقیه را در صف بعدی قرار دهید.","مسائل فوری را از برنامه‌های بلندمدت جدا و رسیدگی را مرحله‌بندی کنید.","به جای سرزنش خود، روی شرایط، منابع و اقدام بعدی تمرکز کنید."]},{"color":"#c23939","tier":"نیازمند حمایت و بازنگری","prefix":"این امتیاز نشان می‌دهد تعداد زیادی از پاسخ‌ها نیازمند توجه‌اند؛ نتیجه، تشخیص تخصصی نیست و باید با شرایط واقعی شما سنجیده شود. ","notes":["چند زمینه به‌طور هم‌زمان چالش‌برانگیز به نظر می‌رسند و شروع مرحله‌ای از تلاش برای تغییر یکباره مناسب‌تر است.","روش فعلی احتمالاً نیازمند بازنگری اساسی است؛ روشن کردن اولویت اول، نقطه شروع خواهد بود.","کمک گرفتن از فرد متخصص یا همراه مورد اعتماد می‌تواند در مرتب کردن مسائل و انتخاب گام‌ها مؤثر باشد.","پاسخ‌ها از نیاز به کاهش فشار و ایجاد برنامه‌ای واقع‌بینانه حکایت می‌کنند؛ به ظرفیت فعلی توجه کنید.","چالش‌ها گسترده‌اند؛ بهتر است از تصمیم‌های شتاب‌زده پرهیز و هر تغییر را جداگانه ارزیابی کنید.","برای فهم دقیق‌تر وضعیت، مرور جداگانه پاسخ‌های فردی و کاری اهمیت ویژه‌ای دارد.","تغییر پایدار در چنین وضعیتی به حمایت، زمان‌بندی روشن و پیگیری منظم نیاز دارد.","بالاترین سطح این ارزیابی است؛ بهتر است نتیجه با گفت‌وگویی دقیق و بدون قضاوت بررسی شود."],"actions":["یک گفت‌وگوی تخصصی ترتیب دهید و فقط روی تعیین اولویت نخست تمرکز کنید.","برنامه را به گام‌های کوچک تقسیم کنید و برای هر گام زمان بازبینی بگذارید.","از یک همراه قابل اعتماد برای مرتب کردن مسئله‌ها و پیگیری کمک بگیرید.","تعهدهای غیرضروری را کم کنید و ظرفیت واقعی خود را مبنای برنامه قرار دهید.","از تصمیم‌های بزرگ و فوری پرهیز کنید و یک اقدام کم‌ریسک و قابل سنجش انتخاب کنید.","دو محور را جداگانه مرور کنید و برای هرکدام یک مسئله اصلی بنویسید.","حمایت مناسب را وارد برنامه کنید و روند را در بازه‌های کوتاه ارزیابی کنید.","برای بررسی کامل‌تر، از متخصص واجد صلاحیت کمک بگیرید و قدم اول را همراه او مشخص کنید."]}];
+  const scoreIndex = sum - QUIZ_META.totalMin;
+  const profileIndex = Math.min(Math.floor(scoreIndex / 10), SCORE_PROFILES.length - 1);
+  const itemIndex = profileIndex === SCORE_PROFILES.length - 1 ? scoreIndex - profileIndex * 10 : scoreIndex % 10;
+  const profile = SCORE_PROFILES[profileIndex];
+  const band = {
+    color: profile.color,
+    label: profile.tier + ' · امتیاز ' + sum,
+    text: profile.prefix + profile.notes[itemIndex],
+    action: profile.actions[itemIndex]
+  };
+
+  /* ---------- استخراج پاسخ‌های هر محور ---------- */
+  const personalList = currentAnswers.slice(0, QUIZ_META.businessOffset).map((ans, i) => ({
+    q: ALL_QUESTIONS[i], i, score: ALL_QUESTIONS[i].options[ans].score
+  }));
+  const businessList = currentAnswers.slice(QUIZ_META.businessOffset).map((ans, j) => {
+    const i = j + QUIZ_META.businessOffset;
+    return { q: ALL_QUESTIONS[i], i, score: ALL_QUESTIONS[i].options[ans].score };
+  });
+  const allList = [...personalList, ...businessList];
+
+  const sortedPersonal = [...personalList].sort((a,b) => b.score - a.score);
+  const sortedBusiness = [...businessList].sort((a,b) => b.score - a.score);
+  const topPersonalConcern = sortedPersonal[0];
+  const secondPersonalConcern = sortedPersonal[1];
+  const topBusinessConcern = sortedBusiness[0];
+  const secondBusinessConcern = sortedBusiness[1];
+  const topStrength        = [...allList].sort((a,b) => a.score - b.score)[0];
+
+  const personalLevel = classifyLevel((personalSum / QUIZ_META.personalMax) * 4);
+  const businessLevel = classifyLevel((businessSum / QUIZ_META.businessMax) * 4);
+  const colorFor = lvl => ({ critical:'var(--red)', warning:'#e8a24a', ok:'#d4c85c', strength:'var(--green)' }[lvl]);
+  const personalAvg = personalSum / PERSONAL_QS.length;
+  const businessAvg = businessSum / BUSINESS_QS.length;
+  let axisReading;
+  if (Math.abs(personalAvg - businessAvg) < 0.25) {
+    axisReading = 'دو محور توسعه فردی و کسب‌وکار امتیازهای نزدیکی دارند؛ بنابراین بهتر است برنامه بهبود را هماهنگ و هم‌زمان، اما با گام‌های کوچک در هر دو زمینه پیش ببرید.';
+  } else if (personalAvg > businessAvg) {
+    axisReading = 'در پاسخ‌های شما، محور توسعه فردی نسبت به کسب‌وکار نیازمند توجه بیشتری است. تقویت انرژی، تمرکز و نظم شخصی می‌تواند اجرای تصمیم‌های کاری را نیز آسان‌تر کند.';
+  } else {
+    axisReading = 'در پاسخ‌های شما، محور کسب‌وکار نسبت به توسعه فردی نیازمند توجه بیشتری است. روشن‌کردن مسیر مشتری و ساختن فرایندهای قابل تکرار می‌تواند فشار ناشی از پیگیری‌های پراکنده را کاهش دهد.';
+  }
+
+  /* ---------- توضیح تکمیلی برای عمیق‌تر شدن تحلیل، بدون طولانی‌شدن بی‌رویه ---------- */
+  const PERSONAL_DEPTH = {
+    1: 'این پاسخ نشان می‌دهد در این زمینه یک پایه قابل اتکا دارید. حفظ همین رفتارهای مفید و تبدیل آن‌ها به عادت‌های کوچک و پایدار، کمک می‌کند در روزهای شلوغ نیز تعادل خود را از دست ندهید.',
+    2: 'به نظر می‌رسد توانایی مدیریت این موضوع را دارید، اما اجرای آن همیشه یکدست نیست. بهتر است یک نشانه یا زمان مشخص برای یادآوری انتخاب کنید تا رفتار مفیدتان فقط به حال‌وهوای همان روز وابسته نماند.',
+    3: 'این الگو ممکن است بخشی از انرژی و تمرکز شما را مصرف کند و روی تصمیم‌ها یا ارتباط‌ها اثر بگذارد. به‌جای تغییر هم‌زمان چند عادت، یک موقعیت پرتکرار را انتخاب کنید و برای همان موقعیت یک واکنش ساده و قابل اجرا تعریف کنید.',
+    4: 'این پاسخ می‌گوید این موضوع برای شما نیازمند توجه جدی‌تری است؛ البته این آزمون تشخیص پزشکی یا روان‌شناختی نیست. اگر این وضعیت پایدار است یا زندگی روزمره‌تان را مختل می‌کند، گفت‌وگو با متخصص واجد صلاحیت می‌تواند به روشن‌شدن قدم بعدی کمک کند.'
+  };
+  const BUSINESS_DEPTH = {
+    1: 'این بخش می‌تواند یکی از تکیه‌گاه‌های رشد کسب‌وکار شما باشد. بهتر است عملکرد خوب آن را با یک شاخص روشن، مانند تعداد سرنخ‌های باکیفیت، نرخ تبدیل یا رضایت مشتری، پیگیری کنید تا به حضور و حافظه شخصی وابسته نماند.',
+    2: 'زیرساخت اولیه وجود دارد، اما احتمالاً نتیجه به نظم اجرا وابسته است. یک روال هفتگی کوتاه برای بررسی ورودی‌ها، پیگیری‌ها و نتیجه فروش تعریف کنید تا فرصت‌ها کمتر از دست بروند.',
+    3: 'این پاسخ احتمال وجود اصطکاک در مسیر مشتری را نشان می‌دهد؛ ممکن است بخشی از مخاطبان علاقه‌مند پیش از خرید یا دریافت خدمت خارج شوند. مسیر آشنایی تا خرید را مرحله‌به‌مرحله بررسی کنید و ابتدا همان مرحله‌ای را اصلاح کنید که بیشترین ریزش را دارد.',
+    4: 'این حوزه احتمالاً یکی از گلوگاه‌های اصلی کسب‌وکار است و ادامه‌دادن بدون بررسی می‌تواند زمان و فرصت را هدر دهد. مسیر جذب، پاسخ‌گویی، اعتمادسازی، خرید و پیگیری را روی کاغذ بیاورید و برای هر مرحله مسئول، زمان و معیار سنجش مشخص کنید.'
+  };
+  const STRENGTH_DEPTH = {
+    1: 'این نقطه قوت را آگاهانه حفظ کنید و ببینید چطور می‌توانید از آن برای بهترکردن بخش‌های دیگر زندگی یا کسب‌وکارتان استفاده کنید.',
+    2: 'این زمینه ظرفیت خوبی دارد؛ با کمی نظم بیشتر می‌تواند به یکی از مزیت‌های پایدار شما تبدیل شود.'
+  };
+  function interpFor(item) {
+    const opt = item.q.options[currentAnswers[item.i]];
+    const interp = (item.q.interpretations && item.q.interpretations[opt.score]) || ('پاسخ شما در سطح ' + opt.score + ' ثبت شد.');
+    const depth = item.q.section === 'personal' ? PERSONAL_DEPTH[opt.score] : BUSINESS_DEPTH[opt.score];
+    return { title: item.q.title, interp, depth, score: opt.score };
+  }
+
+  /* ---------- بخش چالش فردی ---------- */
+  let personalSection;
+  if (topPersonalConcern.score <= 1) {
+    personalSection = `<p>۲. <b>حوزه فردی:</b> <span style="color:var(--green)">پاسخ‌های شما در این محور تصویری نسبتاً پایدار و متعادل نشان می‌دهد.</span></p><p style="font-size:14.9px;line-height:2.1;color:#b3e5c9">این ثبات یک سرمایه مهم است؛ آن را با عادت‌های واقع‌بینانه حفظ کنید و در عین حال، مراقب تغییر شرایط و نیازهای تازه خود باشید. هدف، حفظ تعادل همراه با رشد است، نه بی‌تغییر ماندن.</p>`;
+  } else {
+    const info = interpFor(topPersonalConcern);
+    personalSection = `
+      <p>۲. <b>چالش اصلی شما در حوزه فردی:</b></p>
+      <p style="font-size:14.9px;color:var(--muted);margin:2px 0 4px">«${esc(info.title)}»</p>
+      <p style="font-size:16.1px;line-height:2.1;color:#f4d99a;padding-right:12px;border-right:2px solid var(--gold);margin-bottom:8px">${esc(info.interp)}</p>
+      <p style="font-size:14.9px;line-height:2.05;color:#d6dbe4;margin-bottom:8px">${esc(info.depth)}</p>
+      ${secondPersonalConcern.score >= 3 ? `<p style="font-size:14.2px;line-height:2;color:#cbd2dd;margin-bottom:12px"><b>نکته همراه:</b> در کنار این موضوع، «${esc(secondPersonalConcern.q.title)}» نیز امتیاز بالایی گرفته است. بهتر است این دو موضوع را در ارتباط با هم بررسی کنید و برای شروع، یکی را در اولویت بگذارید.</p>` : ''}`;
+  }
+
+  /* ---------- بخش چالش کسب‌وکار ---------- */
+  let businessSection;
+  if (topBusinessConcern.score <= 1) {
+    businessSection = `<p>۳. <b>حوزه کسب‌وکار:</b> <span style="color:var(--green)">پاسخ‌ها از پایه‌ای نسبتاً منظم و قابل اتکا در مسیر کسب‌وکار حکایت دارند.</span></p><p style="font-size:14.9px;line-height:2.1;color:#b3e5c9">برای حفظ این وضعیت، شاخص‌های ساده‌ای مانند رضایت مشتری، خرید مجدد و پیگیری منظم را مرور کنید. رشد پایدار زمانی شکل می‌گیرد که عملکرد خوب به فرایندی روشن تبدیل شود.</p>`;
+  } else {
+    const info = interpFor(topBusinessConcern);
+    businessSection = `
+      <p>۳. <b>مهم‌ترین گلوگاه کسب‌وکار شما:</b></p>
+      <p style="font-size:14.9px;color:var(--muted);margin:2px 0 4px">«${esc(info.title)}»</p>
+      <p style="font-size:16.1px;line-height:2.1;color:#f4d99a;padding-right:12px;border-right:2px solid var(--gold);margin-bottom:8px">${esc(info.interp)}</p>
+      <p style="font-size:14.9px;line-height:2.05;color:#d6dbe4;margin-bottom:8px">${esc(info.depth)}</p>
+      ${secondBusinessConcern.score >= 3 ? `<p style="font-size:14.2px;line-height:2;color:#cbd2dd;margin-bottom:12px"><b>گلوگاه مکمل:</b> موضوع «${esc(secondBusinessConcern.q.title)}» نیز در پاسخ‌های شما نیازمند توجه است. بررسی ارتباط این دو مرحله می‌تواند علت اصلی اتلاف فرصت را روشن‌تر کند.</p>` : ''}`;
+  }
+
+  /* ---------- نقطه قوت ---------- */
+  let strengthSection;
+  if (topStrength.score >= 3) {
+    strengthSection = `<p>۴. <b>نقطه قوت قابل اتکا:</b> در این نوبت پاسخ‌ها هنوز یک زمینه با امتیاز پایین و برجسته نشان نمی‌دهند؛ این به معنی نداشتن توانمندی نیست. بهتر است با مرور پاسخ‌ها، حتی رفتارهای کوچک و قابل حفظ را پیدا کنید و از همان‌ها برای شروع تغییر استفاده کنید.</p>`;
+  } else {
+    const info = interpFor(topStrength);
+    strengthSection = `
+      <p>۴. <b>نقطه قوت کلیدی شما:</b></p>
+      <p style="font-size:14.9px;color:var(--muted);margin:2px 0 4px">«${esc(info.title)}»</p>
+      <p style="font-size:16.1px;line-height:2.1;color:#b3e5c9;padding-right:12px;border-right:2px solid var(--green);margin-bottom:6px">${esc(info.interp)}</p>
+      <p style="font-size:14.9px;line-height:2.05;color:#d6dbe4;margin-bottom:12px">${esc(STRENGTH_DEPTH[info.score] || 'این زمینه را به‌عنوان نقطه شروع حفظ کنید و از آن برای ساختن تغییرهای کوچک و پایدار کمک بگیرید.')}</p>`;
+  }
+
+  /* ---------- اولویت انتخابی مشاوره ---------- */
+  const extraOpt = currentExtra !== null ? EXTRA_Q.options[currentExtra] : null;
+  const extraText = extraOpt ? ` انتخاب شما برای جلسه: ${esc(extraOpt.text)}.` : '';
+
+
+  /* ---------- بخش‌های تکمیلی تحلیل ---------- */
+  const pctOf = (v, mn, mx) => Math.max(0, Math.min(100, Math.round(((v - mn) / (mx - mn)) * 100)));
+  const pPct = pctOf(personalSum, PERSONAL_QS.length, QUIZ_META.personalMax);
+  const bPct = pctOf(businessSum, BUSINESS_QS.length, QUIZ_META.businessMax);
+  const tPct = pctOf(sum, QUIZ_META.totalMin, QUIZ_META.totalMax);
+  const meter = (label, pct, color) => `
+    <div style="margin:10px 0">
+      <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#d6dbe4;margin-bottom:5px"><span>${label}</span><span style="color:${color}">${pct}٪ فشار</span></div>
+      <div style="height:9px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden"><div style="width:${pct}%;height:100%;background:${color};border-radius:99px"></div></div>
+    </div>`;
+  const meters = `
+    <div class="bold-analysis" style="margin-top:14px;border-right-color:var(--gold)">
+      <p style="color:var(--gold)">نمای کلی میزان فشار در هر محور</p>
+      ${meter('وضعیت کلی', tPct, band.color)}
+      ${meter('توسعه فردی', pPct, colorFor(personalLevel))}
+      ${meter('کسب‌وکار', bPct, colorFor(businessLevel))}
+      <p style="font-size:13.5px;line-height:2;color:#aeb8c7;margin-top:8px">هرچه نوار کوتاه‌تر باشد، یعنی فشار و نشتی کمتر و وضعیت متعادل‌تر. هدف این نمودار قضاوت نیست؛ فقط نشان می‌دهد توجه شما کجا بیشترین بازده را دارد.</p>
+    </div>`;
+
+  const shownIdx = new Set([topPersonalConcern.i, topBusinessConcern.i]);
+  if (secondPersonalConcern.score >= 3) shownIdx.add(secondPersonalConcern.i);
+  if (secondBusinessConcern.score >= 3) shownIdx.add(secondBusinessConcern.i);
+  const others = [...allList].filter(it => it.score >= 3 && !shownIdx.has(it.i)).sort((a, b) => b.score - a.score).slice(0, 3);
+  const othersHtml = others.length ? `
+    <p>۶. <b>موضوع‌های دیگری که ارزش بررسی دارند:</b></p>
+    ${others.map(it => { const inf = interpFor(it); return `
+      <p style="font-size:14.5px;line-height:2.05;color:#d6dbe4;margin-bottom:10px;padding-right:12px;border-right:2px solid rgba(255,255,255,.15)"><b style="color:#f4d99a">«${esc(inf.title)}»</b><br>${esc(inf.interp)}</p>`; }).join('')}` : '';
+
+  const roadmapLead = profileIndex <= 1
+    ? 'شما روی پایه‌ای نسبتاً محکم ایستاده‌اید؛ پس هدف این ۳۰ روز «تثبیت و ارتقا» است، نه ترمیم.'
+    : profileIndex <= 3
+      ? 'در این ۳۰ روز هدف، کم‌کردن اصطکاک‌های اصلی و ساختن یک ریتم پایدار است.'
+      : 'در این ۳۰ روز هدف، سبک‌کردن فشار، انتخاب یک اولویت و گرفتن حمایت مناسب است؛ نه اصلاح همه‌چیز با هم.';
+  const roadmap = `
+    <div class="bold-analysis" style="margin-top:14px;border-right-color:var(--green)">
+      <p style="color:var(--green)">نقشه راه ۳۰ روزه پیشنهادی</p>
+      <p style="font-size:14.5px;line-height:2.05;color:#d6dbe4">${roadmapLead}</p>
+      <p style="font-size:14.5px;line-height:2.05;color:#d6dbe4"><b>روز ۱ تا ۷ | شفاف‌سازی:</b> مهم‌ترین چالش خود را انتخاب کنید، وضعیت فعلی‌اش را با یک عدد یا نشانه قابل مشاهده بنویسید و هر روز فقط یک قدم کوچک بردارید.</p>
+      <p style="font-size:14.5px;line-height:2.05;color:#d6dbe4"><b>روز ۸ تا ۲۱ | ساختن ریتم:</b> همان قدم را به یک روال ثابت تبدیل کنید، یک زمان مشخص برای آن بگذارید و هر چند روز یک‌بار نتیجه را کوتاه مرور کنید.</p>
+      <p style="font-size:14.5px;line-height:2.05;color:#d6dbe4"><b>روز ۲۲ تا ۳۰ | سنجش و تصمیم:</b> نتیجه را با روز اول مقایسه کنید؛ آنچه جواب داده نگه دارید، آنچه جواب نداده را اصلاح کنید و هدف ماه بعد را انتخاب کنید.</p>
+    </div>
+    <div class="bold-analysis" style="margin-top:14px;border-right-color:var(--gold)">
+      <p style="color:var(--gold)">جمع‌بندی</p>
+      <p style="font-size:15px;line-height:2.15;color:#e6eaf0">این کارنامه آینه‌ای از وضعیت امروز شماست، نه پیش‌بینی آینده. همین‌که این پرسش‌ها را با صداقت پاسخ داده‌اید، یعنی قدم اول، که دیدن روشن‌تر مسئله است، برداشته شده. تغییرهای ماندگار معمولاً از اقدام‌های کوچک، مشخص و تکرارشونده شروع می‌شوند. اگر دوست دارید این نتیجه را همراه با یک متخصص بررسی کنید و اولویت‌ها را دقیق‌تر بچینید، می‌توانید از جلسه رایگان آکادمی استفاده کنید.</p>
+    </div>`;
+
+  let html = `
+    <div class="scorehero">
+      <div class="eyebrow">تحلیل اختصاصی امتیاز ${sum}</div>
+      <div class="score">${sum} از ${QUIZ_META.totalMax}</div>
+      <div class="scorecap">امتیاز کل فشار / نشتی</div>
+    </div>
+
+    <div class="split">
+      <div class="p"><small>توسعه فردی</small><b style="color:${colorFor(personalLevel)}">${personalSum} / ${QUIZ_META.personalMax}</b></div>
+      <div class="b"><small>کسب‌وکار</small><b style="color:${colorFor(businessLevel)}">${businessSum} / ${QUIZ_META.businessMax}</b></div>
+    </div>
+
+    <div class="bold-analysis" style="border-right-color:${band.color}">
+      <p style="color:${band.color}">۱. سطح کلی شما: ${band.label}</p>
+      <p style="font-size:16.1px;font-weight:500;line-height:2.1">${band.text}</p>
+      <p style="font-size:14.9px;font-weight:500;line-height:2.05;color:#d6dbe4;margin-top:8px">${axisReading}</p>
+      ${personalSection}
+      ${businessSection}
+      ${strengthSection}
+      <p>۵. <b>اقدام بعدی و نقشه راه کوتاه:</b> <span style="color:var(--gold)">${band.action}</span>${extraText}</p>
+      ${othersHtml}
+      <p style="font-size:14.5px;font-weight:500;line-height:2.05;color:#d6dbe4;margin-top:6px"><b>گام اول | امروز:</b> مسئله اصلی را در یک جمله بنویسید و مشخص کنید چه چیزی در کنترل مستقیم شماست.</p>
+      <p style="font-size:14.5px;font-weight:500;line-height:2.05;color:#d6dbe4"><b>گام دوم | سه روز آینده:</b> یک اقدام کوچک، روشن و قابل انجام انتخاب کنید؛ زمان و معیار انجام آن را از قبل تعیین کنید.</p>
+      <p style="font-size:14.5px;font-weight:500;line-height:2.05;color:#d6dbe4"><b>گام سوم | پایان هفته:</b> نتیجه را با وضعیت امروز مقایسه کنید، آنچه مؤثر بوده نگه دارید و فقط یک مورد را برای دور بعد اصلاح کنید.</p>
+      <p style="font-size:14.2px;font-weight:500;line-height:2.05;color:#aeb8c7;margin-top:8px">این کارنامه یک نقشه شروع بر پایه پاسخ‌های همین آزمون است، نه برچسب قطعی یا تشخیص تخصصی. شرایط واقعی، منابع و اولویت‌های شما باید در گفت‌وگوی تکمیلی نیز در نظر گرفته شوند.</p>
+    </div>
+    ${meters}
+    ${roadmap}
+  `;
+
+  $('report').innerHTML = html;
+  (document.getElementById('saveMsg')||{style:{}}).textContent = '';
+  const submitButton = document.getElementById('submitResultBtn');
+  if (submitButton) { submitButton.disabled = false; submitButton.textContent = 'ثبت نهایی کارنامه و اطلاعات ←'; }
+  show('result');
+  saveResult(true);
+}
+
+async function saveResult(silent) {
+  if (!currentUser || !currentRecord || currentAnswers.length !== ALL_QUESTIONS.length || currentAnswers.some(a => a === null || a === undefined)) return;
+  const submitButton = document.getElementById('submitResultBtn');
+  if (resultAlreadySaved) {
+    if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'کارنامه ثبت شده ✓'; }
+    return;
+  }
+  if (submitButton) submitButton.disabled = true;
+
+  const phone = normPhone(currentRecord.participant.phone);
+  const payload = {
+    full_name: currentRecord.participant.full_name,
+    phone_e164: phone,
+    answers: currentRecord.answers,
+    score: currentRecord.score,
+    personal_score: currentRecord.personal_score,
+    business_score: currentRecord.business_score,
+    max_score: currentRecord.max_score,
+    personal_max: currentRecord.personal_max,
+    business_max: currentRecord.business_max,
+    extra_choice: currentRecord.extra_choice,
+    extra_score: currentRecord.extra_score,
+    extra_text: currentRecord.extra_text
+  };
+
+  (document.getElementById('saveMsg')||{style:{}}).textContent = 'در حال ثبت کارنامه...';
+  (document.getElementById('saveMsg')||{style:{}}).style.color = 'var(--muted)';
+  let ok = false;
+  if (supabaseClient) {
+    try {
+      const { error } = await supabaseClient.from('assessment_submissions').insert(payload);
+      if (!error) ok = true; else console.error(error);
+    } catch (e) { console.error(e); }
+  }
+  if (await sendToSheets('result', payload)) ok = true;
+  backupLocal('akam_results_backup', payload);
+
+  if (ok) {
+    resultAlreadySaved = true;
+    (document.getElementById('saveMsg')||{style:{}}).textContent = '✓ کارنامه شما با موفقیت ثبت شد.';
+    (document.getElementById('saveMsg')||{style:{}}).style.color = 'var(--green)';
+    if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'کارنامه ثبت شده ✓'; }
+  } else {
+    (document.getElementById('saveMsg')||{style:{}}).textContent = '';
+    if (submitButton) submitButton.disabled = false;
+  }
+}
+
+let adminTapCount = 0;
+let adminTapReset = null;
+function secretAdminAccess() {
+  adminTapCount += 1;
+  if (adminTapReset) clearTimeout(adminTapReset);
+  adminTapReset = setTimeout(() => { adminTapCount = 0; }, 2200);
+  if (adminTapCount >= 5) {
+    adminTapCount = 0;
+    clearTimeout(adminTapReset);
+    adminTapReset = null;
+    openManager();
+  }
+}
+
+document.addEventListener('keydown', event => {
+  const logo = $('brandAdminTrigger');
+  if (logo && document.activeElement === logo && (event.key === 'Enter' || event.key === ' ')) {
+    event.preventDefault();
+    secretAdminAccess();
+  }
+});
+
+function normalizeAdminPhone(value) {
+  const n = digits(value);
+  if (n.startsWith('0')) return '+98' + n.slice(1);
+  if (n.startsWith('98')) return '+' + n;
+  return '+' + n;
+}
+
+function backendNotConfiguredMessage() {
+  return 'اتصال سامانه مرکزی هنوز تنظیم نشده است. ابتدا پروژه پایگاه داده و کلید عمومی آن باید در فایل برنامه قرار گیرد.';
+}
+
+async function openManager() {
+  show('managerLogin');
+  $('loginMsg').textContent = '';
+  $('adminPhone').value = '';
+}
+
+const ADMIN_PHONE_HASH = "0424efd4df4e0ed342711bce924228b6d6de90a45512108a654f470ff372fd85";
+function readLocal(key) { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { return []; } }
+async function localAdminLogin() {
+  const msg = $('loginMsg');
+  const phone = normalizeAdminPhone($('adminPhone').value);
+  const pass = $('adminPass').value;
+  if ((await sha256(phone)) !== ADMIN_PHONE_HASH) {
+    msg.textContent = 'این شماره مجاز به ورود به پنل مدیریت نیست.';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  if (!SHEETS_URL) {
+    msg.textContent = 'اتصال Google Sheet هنوز تنظیم نشده است (SHEETS_URL خالی است).';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  if (!pass) { msg.textContent = 'رمز مدیر را وارد کنید.'; msg.style.color = 'var(--red)'; return; }
+  msg.textContent = 'در حال دریافت اطلاعات...';
+  msg.style.color = 'var(--muted)';
+  let data;
+  try {
+    const r = await fetch(SHEETS_URL + '?key=' + encodeURIComponent(pass));
+    data = await r.json();
+  } catch (e) {
+    msg.textContent = 'دریافت اطلاعات انجام نشد؛ اتصال اینترنت و آدرس SHEETS_URL را بررسی کنید.';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  if (!data || data.error) {
+    msg.textContent = 'رمز مدیر درست نیست.';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  const clean = v => String(v || '').replace(/^'/, '');
+  isAdmin = true;
+  currentAdminPhone = phone;
+  currentAdmin = { id: phone, phone, phone_e164: phone, name: 'مدیر', is_primary: false, role: 'manager' };
+
+  const people = new Map();
+  (data.leads || []).forEach(l => {
+    const ph = normPhone(clean(l.phone));
+    const e = people.get(ph) || { id: ph, full_name: l.name, phone: ph, created_at: l.t, last_started_at: l.t, start_count: 0, completed_count: 0 };
+    e.start_count += 1; e.full_name = l.name; if (l.t > e.last_started_at) e.last_started_at = l.t;
+    people.set(ph, e);
+  });
+  state.results = (data.results || []).map((r, i) => {
+    const ph = normPhone(clean(r.phone));
+    return {
+      id: 'r' + i, user_id: ph, participant: { full_name: r.name, phone: ph }, answers: r.answers,
+      score: r.score, personal_score: r.personal, business_score: r.business,
+      max_score: QUIZ_META.totalMax, personal_max: QUIZ_META.personalMax, business_max: QUIZ_META.businessMax,
+      extra_choice: r.extra_choice, extra_score: r.extra_score, extra_text: r.extra_text, created_at: r.t
+    };
+  });
+  state.results.forEach(r => {
+    const k = r.user_id;
+    if (!people.has(k)) people.set(k, { id: k, full_name: r.participant.full_name, phone: k, created_at: r.created_at, last_started_at: r.created_at, start_count: 0, completed_count: 0 });
+    people.get(k).completed_count += 1;
+  });
+  state.users = [...people.values()].sort((a, b) => (b.last_started_at || '').localeCompare(a.last_started_at || ''));
+  state.admins = [currentAdmin];
+  cache = { users: state.users, results: state.results, admins: state.admins };
+  $('adminPass').value = '';
+  show('admin');
+  renderAdmin();
+}
+
+async function requestAdminOtp() {
+  if (!supabaseClient) {
+    $('loginMsg').textContent = backendNotConfiguredMessage();
+    $('loginMsg').style.color = 'var(--red)';
+    return;
+  }
+  const phone = normalizeAdminPhone($('adminPhone').value);
+  if (digits(phone).length < 11 || digits(phone).length > 15) {
+    $('loginMsg').textContent = 'شماره موبایل معتبر وارد کنید.';
+    $('loginMsg').style.color = 'var(--red)';
+    return;
+  }
+  $('requestOtpBtn').disabled = true;
+  $('loginMsg').textContent = 'در حال ارسال کد تأیید...';
+  $('loginMsg').style.color = 'var(--muted)';
+  try {
+    const { error } = await supabaseClient.auth.signInWithOtp({ phone });
+    if (error) throw error;
+    currentAdminPhone = phone;
+    $('otpBox').classList.remove('hidden');
+    $('loginMsg').textContent = 'در صورت ثبت بودن این شماره، کد ورود پیامکی ارسال می‌شود.';
+    $('loginMsg').style.color = 'var(--green)';
+    $('adminOtp').focus();
+  } catch (error) {
+    console.error('requestAdminOtp:', error);
+    $('loginMsg').textContent = 'ارسال کد انجام نشد. تنظیمات ورود پیامکی و شماره را بررسی کنید.';
+    $('loginMsg').style.color = 'var(--red)';
+  } finally {
+    $('requestOtpBtn').disabled = false;
+  }
+}
+
+async function verifyAdminOtp() {
+  if (!supabaseClient) return;
+  const phone = currentAdminPhone || normalizeAdminPhone($('adminPhone').value);
+  const token = digits($('adminOtp').value);
+  if (token.length !== 6) {
+    $('loginMsg').textContent = 'کد ۶ رقمی را کامل وارد کنید.';
+    $('loginMsg').style.color = 'var(--red)';
+    return;
+  }
+  $('loginMsg').textContent = 'در حال بررسی کد و مجوز ورود...';
+  $('loginMsg').style.color = 'var(--muted)';
+  try {
+    const { data, error } = await supabaseClient.auth.verifyOtp({ phone, token, type: 'sms' });
+    if (error) throw error;
+    await finishAdminLogin(data?.user?.phone || phone);
+  } catch (error) {
+    console.error('verifyAdminOtp:', error);
+    $('loginMsg').textContent = 'کد تأیید معتبر نیست یا منقضی شده است. دوباره تلاش کنید.';
+    $('loginMsg').style.color = 'var(--red)';
+  }
+}
+
+async function finishAdminLogin(phoneValue) {
+  if (!supabaseClient) return;
+  const phone = normalizeAdminPhone(phoneValue);
+  try {
+    const { data: admin, error } = await supabaseClient
+      .from('admin_allowlist')
+      .select('phone_e164, full_name, role, active')
+      .eq('phone_e164', phone)
+      .eq('active', true)
+      .maybeSingle();
+
+    if (error || !admin || !admin.active) {
+      await supabaseClient.auth.signOut();
+      isAdmin = false;
+      currentAdmin = null;
+      $('loginMsg').textContent = 'این بخش فقط برای مدیران مجاز است. اطلاعات ورود را بررسی کنید.';
+      $('loginMsg').style.color = 'var(--red)';
+      return;
+    }
+
+    isAdmin = true;
+    currentAdmin = {
+      id: admin.phone_e164,
+      phone: admin.phone_e164,
+      phone_e164: admin.phone_e164,
+      name: admin.full_name || '',
+      is_primary: admin.role === 'primary',
+      role: admin.role
+    };
+    currentAdminPhone = admin.phone_e164;
+    await refreshAdminData();
+    show('admin');
+    renderAdmin();
+  } catch (error) {
+    console.error('finishAdminLogin:', error);
+    await supabaseClient.auth.signOut();
+    isAdmin = false;
+    currentAdmin = null;
+    $('loginMsg').textContent = 'اعتبارسنجی مدیر انجام نشد. تنظیمات پایگاه داده را بررسی کنید.';
+    $('loginMsg').style.color = 'var(--red)';
+  }
+}
+
+async function refreshAdminData() {
+  if (!supabaseClient || !isAdmin) return;
+  const [{ data: rows, error: resultsError }, { data: leads, error: leadsError }, { data: admins, error: adminsError }] = await Promise.all([
+    supabaseClient.from('assessment_submissions').select('*').order('created_at', { ascending: true }),
+    supabaseClient.from('assessment_leads').select('*').order('last_started_at', { ascending: false }),
+    supabaseClient.from('admin_allowlist').select('phone_e164, full_name, role, active, created_at').eq('active', true)
+  ]);
+  if (resultsError) throw resultsError;
+  if (leadsError) throw leadsError;
+  if (adminsError) throw adminsError;
+
+  state.results = (rows || []).map(row => ({
+    id: row.id,
+    user_id: row.phone_e164,
+    participant: { full_name: row.full_name, phone: row.phone_e164 },
+    answers: row.answers,
+    score: row.score,
+    personal_score: row.personal_score,
+    business_score: row.business_score,
+    max_score: row.max_score,
+    personal_max: row.personal_max,
+    business_max: row.business_max,
+    extra_choice: row.extra_choice,
+    extra_score: row.extra_score,
+    extra_text: row.extra_text,
+    created_at: row.created_at
+  }));
+
+  // فهرست کاربران از جدول ثبت اولیه می‌آید، نه فقط از کارنامه‌های تکمیل‌شده.
+  const people = new Map();
+  (leads || []).forEach(lead => {
+    people.set(lead.phone_e164, {
+      id: lead.phone_e164,
+      full_name: lead.full_name,
+      phone: lead.phone_e164,
+      created_at: lead.created_at,
+      last_started_at: lead.last_started_at,
+      start_count: lead.start_count || 1,
+      completed_count: 0
+    });
+  });
+  // رکوردهای قدیمی که پیش از ایجاد جدول ثبت اولیه ذخیره شده‌اند هم حفظ می‌شوند.
+  state.results.forEach(result => {
+    const key = result.participant.phone;
+    if (!people.has(key)) {
+      people.set(key, {
+        id: key, full_name: result.participant.full_name, phone: key,
+        created_at: result.created_at, last_started_at: result.created_at,
+        start_count: 0, completed_count: 0
+      });
+    }
+    const person = people.get(key);
+    person.completed_count += 1;
+    person.last_result_at = result.created_at;
+    if (result.created_at > (person.last_started_at || '')) person.full_name = result.participant.full_name;
+  });
+  state.users = [...people.values()].sort((a, b) => (b.last_started_at || b.created_at || '').localeCompare(a.last_started_at || a.created_at || ''));
+  state.admins = (admins || []).map(a => ({
+    id: a.phone_e164, phone: a.phone_e164, name: a.full_name || '',
+    is_primary: a.role === 'primary', role: a.role, active: a.active,
+    created_at: a.created_at
+  }));
+  cache = { users: state.users, results: state.results, admins: state.admins };
+}
+
+async function logout() {
+  if (supabaseClient) await supabaseClient.auth.signOut();
+  isAdmin = false;
+  currentAdmin = null;
+  currentAdminPhone = null;
+  state = { admins: [], users: [], results: [] };
+  cache = { users: [], results: [], admins: [] };
+  show('home');
+}
+
+function tab(name) {
+  if (name === 'admins' && !currentAdmin?.is_primary) return;
+  document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  ['overview', 'users', 'results', 'admins'].forEach(x => $('tab-' + x).classList.toggle('hidden', x !== name));
+  renderAdmin();
+}
+
+function renderAdmin() {
+  if (!isAdmin) return;
+  cache.users = state.users;
+  cache.results = state.results;
+  cache.admins = state.admins;
+  const adminsTabButton = document.querySelector('[data-tab="admins"]');
+  if (adminsTabButton) adminsTabButton.classList.toggle('hidden', !currentAdmin?.is_primary);
+  $('nUsers').textContent = cache.users.length;
+  $('nResults').textContent = cache.results.length;
+  $('nAdmins').textContent = state.admins.length;
+
+  $('recentResults').innerHTML = cache.results.slice(-5).reverse().map(r => {
+    const u = cache.users.find(x => x.id === r.user_id) || r.participant;
+    return `<div class="answercard" style="margin-bottom:8px"><b style="font-size:12.6px">${esc(u?.full_name || 'کاربر')}</b><span class="muted" style="margin-right:8px">${r.score}/${r.max_score} · ${dateFa(r.created_at)}</span></div>`;
+  }).join('') || 'هنوز پاسخی ثبت نشده است.';
+
+  const userTerm = ($('userSearch')?.value || '').toLowerCase();
+  $('usersRows').innerHTML = cache.users.filter(u => (u.full_name + ' ' + u.phone).toLowerCase().includes(userTerm)).map(u => {
+    const cnt = u.start_count || 0;
+    const completed = u.completed_count || 0;
+    const status = completed > 0
+      ? '<span style="color:var(--green);font-weight:700">کارنامه ثبت شده</span>'
+      : '<span style="color:#e8a24a;font-weight:700">شروع کرده؛ آزمون ناتمام</span>';
+    return `<tr><td>${esc(u.full_name)}</td><td dir="ltr">${esc(u.phone)}</td><td>${cnt}</td><td>${status}</td><td>${dateFa(u.created_at)}</td><td><button class="btn dark small" onclick="showUserDetail('${esc(u.id)}')">نمایش</button></td></tr>`;
+  }).join('') || '<tr><td colspan="6">کاربری یافت نشد.</td></tr>';
+
+  const resTerm = ($('resultSearch')?.value || '').toLowerCase();
+  $('resultsRows').innerHTML = cache.results.filter(r => {
+    const u = cache.users.find(x => x.id === r.user_id) || r.participant;
+    return ((u?.full_name || '') + ' ' + (u?.phone || '')).toLowerCase().includes(resTerm);
+  }).slice().reverse().map(r => {
+    const u = cache.users.find(x => x.id === r.user_id) || r.participant;
+    return `<tr><td>${esc(u?.full_name || '—')}</td><td dir="ltr">${esc(u?.phone || '—')}</td><td>${r.score}/${r.max_score}</td><td>${r.personal_score}/${r.personal_max}</td><td>${r.business_score}/${r.business_max}</td><td>${dateFa(r.created_at)}</td><td><button class="btn dark small" onclick="showResultDetail('${esc(r.id)}')">پاسخ‌ها</button></td></tr>`;
+  }).join('') || '<tr><td colspan="7">کارنامه‌ای نیست.</td></tr>';
+
+  $('adminsList').innerHTML = currentAdmin?.is_primary ? state.admins.map(a => `
+    <div class="admin-card">
+      <div class="info">
+        <b>${esc(a.name || (a.is_primary ? 'مدیر اصلی' : 'مدیر بدون نام'))} ${a.is_primary ? '<span class="badge-primary">مدیر اصلی</span>' : ''}</b>
+        <small>${a.is_primary ? 'حساب اصلی آکادمی' : 'شماره تأییدشده: ' + esc(a.phone)}</small>
+      </div>
+      ${a.is_primary ? '<span class="muted">قابل حذف نیست</span>' : `<button class="btn danger small" onclick="removeAdmin('${esc(a.id)}')">غیرفعال‌سازی</button>`}
+    </div>
+  `).join('') : '<p class="muted">فقط مدیر اصلی امکان مدیریت دسترسی مدیران را دارد.</p>';
+
+}
+
+async function addAdmin() {
+  const msg = $('addAdminMsg');
+  if (!isAdmin || !currentAdmin?.is_primary) {
+    msg.textContent = 'فقط مدیر اصلی امکان افزودن مدیر جدید را دارد.';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  if (!supabaseClient) {
+    msg.textContent = 'اتصال پایگاه داده تنظیم نشده است.';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  const name = $('newAdminName').value.trim();
+  const phoneRaw = $('newAdminPhone').value.trim();
+  const phone = phoneRaw ? normalizeAdminPhone(phoneRaw) : '';
+  if (!phoneRaw || digits(phone).length < 11 || digits(phone).length > 15) {
+    msg.textContent = 'برای ورود امن مدیر جدید، شماره موبایل معتبر الزامی است. نام اختیاری است.';
+    msg.style.color = 'var(--red)';
+    return;
+  }
+  msg.textContent = 'در حال ثبت دسترسی مدیر جدید...';
+  msg.style.color = 'var(--muted)';
+  try {
+    const { error } = await supabaseClient.from('admin_allowlist').insert({
+      phone_e164: phone,
+      full_name: name || null,
+      role: 'manager',
+      active: true
+    });
+    if (error) throw error;
+    $('newAdminName').value = '';
+    $('newAdminPhone').value = '';
+    await refreshAdminData();
+    msg.textContent = 'مدیر اضافه شد. او باید با همین شماره کد یک‌بارمصرف پیامکی دریافت کند.';
+    msg.style.color = 'var(--green)';
+    renderAdmin();
+  } catch (error) {
+    console.error('addAdmin:', error);
+    msg.textContent = 'افزودن مدیر انجام نشد؛ ممکن است شماره قبلاً ثبت شده باشد یا مجوز پایگاه داده کامل نباشد.';
+    msg.style.color = 'var(--red)';
+  }
+}
+
+async function removeAdmin(id) {
+  if (!isAdmin || !currentAdmin?.is_primary || !supabaseClient) return;
+  const admin = state.admins.find(a => a.id === id);
+  if (!admin) return;
+  if (admin.is_primary) { alert('امکان غیرفعال‌کردن مدیر اصلی وجود ندارد.'); return; }
+  if (!confirm('دسترسی این مدیر غیرفعال شود؟')) return;
+  try {
+    const { error } = await supabaseClient.from('admin_allowlist')
+      .update({ active: false }).eq('phone_e164', admin.phone);
+    if (error) throw error;
+    await refreshAdminData();
+    renderAdmin();
+  } catch (error) {
+    console.error('removeAdmin:', error);
+    alert('غیرفعال‌کردن مدیر انجام نشد. مجوز پایگاه داده را بررسی کنید.');
+  }
+}
+
+function showUserDetail(id) {
+  const u = cache.users.find(x => x.id === id);
+  if (!u) return;
+  const rr = cache.results.filter(r => r.user_id === u.id);
+  const leadStatus = rr.length ? 'حداقل یک کارنامه ثبت‌شده دارد.' : 'اطلاعات تماس ثبت شده؛ هنوز کارنامه‌ای ثبت نشده است.';
+  $('detailBody').innerHTML = `
+    <p><b>${esc(u.full_name)}</b> · <span dir="ltr">${esc(u.phone)}</span></p>
+    <p class="muted" style="margin-top:8px">اولین ثبت: ${dateFa(u.created_at)} · آخرین شروع: ${dateFa(u.last_started_at || u.created_at)}</p>
+    <p class="muted" style="margin-top:4px">دفعات شروع آزمون: ${u.start_count || 0} · کارنامه‌های ثبت‌شده: ${rr.length}</p>
+    <div class="notice ${rr.length ? 'green' : 'blue'}" style="margin-top:10px">${leadStatus}</div>
+    ${rr.map(r => `<div class="answercard" style="margin-top:8px">امتیاز کل: ${r.score}/${r.max_score}<button class="btn dark small" style="float:left" onclick="showResultDetail('${esc(r.id)}')">نمایش</button></div>`).join('') || '<p class="muted" style="margin-top:8px">این مخاطب آزمون را شروع کرده اما هنوز کارنامه‌ای برای او ثبت نشده است.</p>'}
+  `;
+  $('detailModal').classList.remove('hidden');
+}
+
+function showResultDetail(id) {
+  const r = cache.results.find(x => x.id === id);
+  if (!r) return;
+  const u = cache.users.find(x => x.id === r.user_id) || r.participant;
+  
+  let html = `<p><b>${esc(u?.full_name || '—')}</b> · <span dir="ltr">${esc(u?.phone || '—')}</span></p>
+    <p class="muted" style="margin:6px 0 16px">امتیاز کل: ${r.score}/${r.max_score} · توسعه فردی: ${r.personal_score}/${r.personal_max} · کسب‌وکار: ${r.business_score}/${r.business_max} · ${dateFa(r.created_at)}</p>
+    <div class="answer-list">`;
+  ['personal', 'business'].forEach(sec => {
+    const qs = ALL_QUESTIONS.map((q, i) => ({ q, i })).filter(x => x.q.section === sec);
+    html += `<div class="section-label">${sec === 'personal' ? 'محور توسعه فردی' : 'محور کسب‌وکار'}</div>`;
+    qs.forEach(({ q, i }) => {
+      const opt = q.options[r.answers[i]];
+      html += `<div class="answercard lvl${opt.score}">
+        <div class="answerhead"><b>سؤال ${i + 1}: ${esc(q.title)}</b><span class="score-pill lvl${opt.score}">${opt.score}/۴</span></div>
+        <div class="answerchosen">${LETTERS[r.answers[i]]}) ${esc(opt.text)}</div>
+      </div>`;
+    });
+  });
+  html += `</div>`;
+  if (r.extra_text) html += `<div class="notice" style="margin-top:14px"><b>اولویت مشاوره:</b> ${esc(r.extra_text)} (امتیاز ${r.extra_score}/۴)</div>`;
+  $('detailBody').innerHTML = html;
+  $('detailModal').classList.remove('hidden');
+}
+
+function closeModal() { $('detailModal').classList.add('hidden'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function downloadCSV(filename, rows) {
+  const csv = '\uFEFF' + rows.map(r => r.map(v => '"' + String(v ?? '').replace(/"/g, '""') + '"').join(',')).join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function exportUsers() {
+  downloadCSV('akan-academy-users.csv', [['نام و نام خانوادگی', 'شماره موبایل', 'دفعات شروع', 'کارنامه‌های ثبت‌شده', 'تاریخ ثبت اولیه', 'آخرین شروع'], ...cache.users.map(u => [u.full_name, u.phone, u.start_count || 0, u.completed_count || 0, dateFa(u.created_at), dateFa(u.last_started_at || u.created_at)])]);
+}
+function exportResults() {
+  downloadCSV('akan-academy-results.csv', [['نام', 'شماره', 'امتیاز کل', 'توسعه فردی', 'کسب‌وکار', 'حداکثر', 'تاریخ'], ...cache.results.map(r => {
+    const u = cache.users.find(x => x.id === r.user_id) || r.participant;
+    return [u?.full_name || '', u?.phone || '', r.score, r.personal_score, r.business_score, r.max_score, dateFa(r.created_at)];
+  })]);
+}
+
+$('modeBadge').textContent = 'AKAN Academy';
+</script>
+</body>
+</html>
